@@ -19,3 +19,14 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'SwiftyJSON', '~> 2.2.1'
+
+# SDWebImage图片缓存库
+platform :ios, '6.1'
+pod 'SDWebImage', '~>3.7'
+
+# PagingMenuController导航
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod "PagingMenuController"
