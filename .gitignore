@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+*.bak
+/build
+*.pbxuser
+*.mode1v3
+profile
+xcuserdata
+project.xcworkspace
+Pods/*
+Podfile.lock
+/zaozuo-ios.xcworkspace
