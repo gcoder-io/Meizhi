@@ -14,6 +14,7 @@
 		E12B46B11BA96BEF00376FA4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E12B46B01BA96BEF00376FA4 /* Images.xcassets */; };
 		E12B46B41BA96BEF00376FA4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E12B46B21BA96BEF00376FA4 /* LaunchScreen.xib */; };
 		E12B46C01BA96BEF00376FA4 /* MeizhiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46BF1BA96BEF00376FA4 /* MeizhiTests.swift */; };
+		E12B46D11BA9728000376FA4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46D01BA9728000376FA4 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		E12B46B91BA96BEF00376FA4 /* MeizhiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeizhiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12B46BE1BA96BEF00376FA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E12B46BF1BA96BEF00376FA4 /* MeizhiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeizhiTests.swift; sourceTree = "<group>"; };
+		E12B46D01BA9728000376FA4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,8 @@
 		E12B46A61BA96BEF00376FA4 /* Meizhi */ = {
 			isa = PBXGroup;
 			children = (
+				E12B46CE1BA9727600376FA4 /* business */,
+				E12B46C91BA971DC00376FA4 /* sdk */,
 				E12B46A91BA96BEF00376FA4 /* AppDelegate.swift */,
 				E12B46AB1BA96BEF00376FA4 /* ViewController.swift */,
 				E12B46AD1BA96BEF00376FA4 /* Main.storyboard */,
@@ -134,6 +138,29 @@
 				E12B46BE1BA96BEF00376FA4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E12B46C91BA971DC00376FA4 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
+		E12B46CE1BA9727600376FA4 /* business */ = {
+			isa = PBXGroup;
+			children = (
+				E12B46CF1BA9727600376FA4 /* main */,
+			);
+			path = business;
+			sourceTree = "<group>";
+		};
+		E12B46CF1BA9727600376FA4 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				E12B46D01BA9728000376FA4 /* MainViewController.swift */,
+			);
+			path = main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12B46D11BA9728000376FA4 /* MainViewController.swift in Sources */,
 				E12B46AC1BA96BEF00376FA4 /* ViewController.swift in Sources */,
 				E12B46AA1BA96BEF00376FA4 /* AppDelegate.swift in Sources */,
 			);
