@@ -30,3 +30,6 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod "PagingMenuController"
+
+# pod 'PageMenu'
+pod 'PageMenu'
