@@ -10,11 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class DayListViewController: UIViewController {
+class DayListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private var categoryInfo:CategoryInfo?
-    private static let PAGE_SIZE = "10"
+    private static let PAGE_SIZE = "30"
     private var page = 0
-
+    @IBOutlet weak var tableView: UITableView!
+    private var list:[CategoryItem]?
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
         self.categoryInfo = categoryInfo
@@ -25,8 +26,44 @@ class DayListViewController: UIViewController {
         println(categoryInfo?.title)
         println("DayListViewController")
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         loadData()
         
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list?.count ?? 0
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // cell复用处理
+        var cacheCell:AnyObject? = tableView.dequeueReusableCellWithIdentifier("Cell")
+        if cacheCell == nil{
+            cacheCell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+        }
+        let cell:UITableViewCell = cacheCell as! UITableViewCell
+        
+        // fill data.
+        let categoryItem = list?[indexPath.row]
+        cell.textLabel?.text = categoryItem?.desc
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+//        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+//        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
     private func loadData(){
@@ -39,7 +76,7 @@ class DayListViewController: UIViewController {
             return
         }
         
-        weak var weakSelf = self
+        weak var weakSelf = self // 弱引用self指针
         Alamofire.request(.GET, url!)
            .response { (request, response, data, error) -> Void in
             weakSelf?.handleResponse(response, data: data)
@@ -50,7 +87,8 @@ class DayListViewController: UIViewController {
     private func handleResponse(response:NSHTTPURLResponse?, data:NSData?){
         if response?.statusCode == 200 && data != nil{
             if let list:[CategoryItem]? = parseJson(data!){
-                
+                self.list = list
+                tableView.reloadData()
             }
         }
     }
