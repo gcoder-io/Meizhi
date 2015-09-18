@@ -20,6 +20,8 @@
 		E12B47001BAAAB3600376FA4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */; };
 		E12B47031BAAABA600376FA4 /* DayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47021BAAABA600376FA4 /* DayListViewController.swift */; };
 		E12B47071BAAC33600376FA4 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47061BAAC33600376FA4 /* CategoryItem.swift */; };
+		E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EF1611BABF73F00152199 /* DayListCell.swift */; };
+		E17EF1641BABF73F00152199 /* DayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17EF1621BABF73F00152199 /* DayListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,9 @@
 		E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E12B47021BAAABA600376FA4 /* DayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListViewController.swift; sourceTree = "<group>"; };
 		E12B47061BAAC33600376FA4 /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		E17EF1611BABF73F00152199 /* DayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
+		E17EF1621BABF73F00152199 /* DayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayListCell.xib; sourceTree = "<group>"; };
+		E17EF1691BAC163D00152199 /* Meizhi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizhi-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +118,7 @@
 		E12B46A61BA96BEF00376FA4 /* Meizhi */ = {
 			isa = PBXGroup;
 			children = (
+				E17EF1691BAC163D00152199 /* Meizhi-Bridging-Header.h */,
 				E12B46CE1BA9727600376FA4 /* business */,
 				E12B46C91BA971DC00376FA4 /* sdk */,
 				E12B46A91BA96BEF00376FA4 /* AppDelegate.swift */,
@@ -198,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				E12B47021BAAABA600376FA4 /* DayListViewController.swift */,
+				E17EF1611BABF73F00152199 /* DayListCell.swift */,
+				E17EF1621BABF73F00152199 /* DayListCell.xib */,
 			);
 			path = day;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 			files = (
 				E12B46AF1BA96BEF00376FA4 /* Main.storyboard in Resources */,
 				E12B46B41BA96BEF00376FA4 /* LaunchScreen.xib in Resources */,
+				E17EF1641BABF73F00152199 /* DayListCell.xib in Resources */,
 				E12B46B11BA96BEF00376FA4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +374,7 @@
 				E12B46AC1BA96BEF00376FA4 /* ViewController.swift in Sources */,
 				E12B47071BAAC33600376FA4 /* CategoryItem.swift in Sources */,
 				E12B46AA1BA96BEF00376FA4 /* AppDelegate.swift in Sources */,
+				E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */,
 				E12B46FE1BAAA89C00376FA4 /* Constant.swift in Sources */,
 				E12B47001BAAAB3600376FA4 /* CategoryViewController.swift in Sources */,
 				E12B46FB1BAAA77F00376FA4 /* CategoryInfo.swift in Sources */,
@@ -496,10 +506,13 @@
 			baseConfigurationReference = 0D163CB43128CDE75984BD92 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Meizhi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Meizhi/Meizhi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -508,10 +521,12 @@
 			baseConfigurationReference = 9B07FF17A6B3E5AD9B08B227 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Meizhi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Meizhi/Meizhi-Bridging-Header.h";
 			};
 			name = Release;
 		};

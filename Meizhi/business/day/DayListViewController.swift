@@ -29,8 +29,13 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         
-        loadData()
+        // 注册xib
+        let nib = UINib(nibName: "DayListCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "DayListCell")
         
+        tableView.estimatedRowHeight = 100
+
+        loadData()
     }
     
     // MARK: - UITableViewDataSource
@@ -42,16 +47,22 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // cell复用处理
-        var cacheCell:AnyObject? = tableView.dequeueReusableCellWithIdentifier("Cell")
-        if cacheCell == nil{
-            cacheCell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell", forIndexPath: indexPath)
+            as! DayListCell
+
+        if let categoryItem = list?[indexPath.row]{
+            // fill data.
+            cell.lb_date.text = categoryItem.desc
+            cell.iv_image.sd_setImageWithURL(NSURL(string: categoryItem.url), placeholderImage: UIImage(named: "avatar"))
+            
+            // 计算cell的高度
+            if categoryItem.cellHeight == nil{
+                var cellHeight = cell.iv_image.frame.height
+                categoryItem.cellHeight = cellHeight
+            }
         }
-        let cell:UITableViewCell = cacheCell as! UITableViewCell
-        
-        // fill data.
-        let categoryItem = list?[indexPath.row]
-        cell.textLabel?.text = categoryItem?.desc
+
         return cell
     }
     
@@ -64,6 +75,15 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var height = list?[indexPath.row].cellHeight
+        return height ?? 0
     }
     
     private func loadData(){

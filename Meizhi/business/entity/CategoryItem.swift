@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 ancode. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class CategoryItem{
     var createdAt : String!
@@ -18,6 +18,8 @@ public class CategoryItem{
     var url : String!
     var used : Bool!
     var who : String!
+    
+    var cellHeight:CGFloat?
     
     /**
     * Instantiate the instance using the passed dictionary values to set the properties values
