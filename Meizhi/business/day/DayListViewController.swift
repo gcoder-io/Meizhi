@@ -15,7 +15,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     private static let PAGE_SIZE = "30"
     private var page = 0
     @IBOutlet weak var tableView: UITableView!
-    private var list:[CategoryItem]?
+    private var list:[DayListItem]?
     private var cellHeight:CGFloat?
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
@@ -122,7 +122,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     */
     private func handleResponse(response:NSHTTPURLResponse?, data:NSData?){
         if response?.statusCode == 200 && data != nil{
-            if let list:[CategoryItem]? = parseJson(data!){
+            if let list:[DayListItem]? = parseJson(data!){
                 self.list = list
                 println("tableView.reloadData=====>")
                 
@@ -138,18 +138,18 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     - returns: [CategoryItem]
     */
-    private func parseJson(data:NSData) -> [CategoryItem]?{
-        var list:[CategoryItem]? = nil
+    private func parseJson(data:NSData) -> [DayListItem]?{
+        var list:[DayListItem]? = nil
         
         let json = JSON(data:data)
         let error:Bool = json["error"].boolValue
         let results = json["results"]
         if !error && results != nil && results.count > 0{
-            list = [CategoryItem]()
+            list = [DayListItem]()
             for(var i=0; i < results.count; i++){
                 let dic = results[i].dictionaryObject
                 if dic != nil{
-                    let item = CategoryItem(fromDictionary: dic!)
+                    let item = DayListItem(fromDictionary: dic!)
                     list?.append(item)
                 }
             }

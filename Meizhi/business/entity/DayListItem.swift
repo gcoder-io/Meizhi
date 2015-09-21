@@ -1,5 +1,5 @@
 //
-//  CategoryItem.swift
+//  DayListItem.swift
 //  Meizhi
 //
 //  Created by snowleft on 15/9/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CategoryItem{
+public class DayListItem{
     var createdAt : String!
     var desc : String!
     var objectId : String!

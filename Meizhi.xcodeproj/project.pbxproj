@@ -19,7 +19,7 @@
 		E12B46FE1BAAA89C00376FA4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46FD1BAAA89C00376FA4 /* Constant.swift */; };
 		E12B47001BAAAB3600376FA4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */; };
 		E12B47031BAAABA600376FA4 /* DayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47021BAAABA600376FA4 /* DayListViewController.swift */; };
-		E12B47071BAAC33600376FA4 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47061BAAC33600376FA4 /* CategoryItem.swift */; };
+		E12B47071BAAC33600376FA4 /* DayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47061BAAC33600376FA4 /* DayListItem.swift */; };
 		E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EF1611BABF73F00152199 /* DayListCell.swift */; };
 		E17EF1641BABF73F00152199 /* DayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17EF1621BABF73F00152199 /* DayListCell.xib */; };
 /* End PBXBuildFile section */
@@ -53,7 +53,7 @@
 		E12B46FD1BAAA89C00376FA4 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E12B47021BAAABA600376FA4 /* DayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListViewController.swift; sourceTree = "<group>"; };
-		E12B47061BAAC33600376FA4 /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		E12B47061BAAC33600376FA4 /* DayListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListItem.swift; sourceTree = "<group>"; };
 		E17EF1611BABF73F00152199 /* DayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		E17EF1621BABF73F00152199 /* DayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayListCell.xib; sourceTree = "<group>"; };
 		E17EF1691BAC163D00152199 /* Meizhi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizhi-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 		E12B47051BAAC31300376FA4 /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				E12B47061BAAC33600376FA4 /* CategoryItem.swift */,
+				E12B47061BAAC33600376FA4 /* DayListItem.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 			files = (
 				E12B46D11BA9728000376FA4 /* MainViewController.swift in Sources */,
 				E12B46AC1BA96BEF00376FA4 /* ViewController.swift in Sources */,
-				E12B47071BAAC33600376FA4 /* CategoryItem.swift in Sources */,
+				E12B47071BAAC33600376FA4 /* DayListItem.swift in Sources */,
 				E12B46AA1BA96BEF00376FA4 /* AppDelegate.swift in Sources */,
 				E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */,
 				E12B46FE1BAAA89C00376FA4 /* Constant.swift in Sources */,
