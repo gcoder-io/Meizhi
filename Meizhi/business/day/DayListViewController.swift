@@ -16,6 +16,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     private var page = 0
     @IBOutlet weak var tableView: UITableView!
     private var list:[CategoryItem]?
+    private var cellHeight:CGFloat?
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
         self.categoryInfo = categoryInfo
@@ -26,6 +27,11 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         println(categoryInfo?.title)
         println("DayListViewController")
         
+        initTableView()
+        loadData()
+    }
+    
+    private func initTableView(){
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -33,9 +39,10 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         let nib = UINib(nibName: "DayListCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "DayListCell")
         
-        tableView.estimatedRowHeight = 100
-
-        loadData()
+        // 计算cell高度
+        let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell") as! DayListCell
+        cellHeight = cell.iv_image.frame.height + cell.lb_date.frame.height
+        tableView.estimatedRowHeight = cellHeight!
     }
     
     // MARK: - UITableViewDataSource
@@ -46,7 +53,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
 
         let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell", forIndexPath: indexPath)
             as! DayListCell
@@ -58,8 +65,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
             
             // 计算cell的高度
             if categoryItem.cellHeight == nil{
-                var cellHeight = cell.iv_image.frame.height
-                categoryItem.cellHeight = cellHeight
+                categoryItem.cellHeight = self.cellHeight
             }
         }
 
@@ -86,6 +92,11 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         return height ?? 0
     }
     
+    // MARK: - Network
+    
+    /**
+    从网络/本地加载数据
+    */
     private func loadData(){
         if categoryInfo == nil || categoryInfo?.url == nil{
             return
@@ -103,17 +114,30 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    // 处理服务器接口响应
+    /**
+    处理服务器接口响应
+    
+    - parameter response: NSHTTPURLResponse
+    - parameter data:     源数据
+    */
     private func handleResponse(response:NSHTTPURLResponse?, data:NSData?){
         if response?.statusCode == 200 && data != nil{
             if let list:[CategoryItem]? = parseJson(data!){
                 self.list = list
+                println("tableView.reloadData=====>")
+                
                 tableView.reloadData()
             }
         }
     }
     
-    // 解析json数据
+    /**
+    解析json数据
+    
+    - parameter data: 源数据
+    
+    - returns: [CategoryItem]
+    */
     private func parseJson(data:NSData) -> [CategoryItem]?{
         var list:[CategoryItem]? = nil
         
