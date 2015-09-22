@@ -31,21 +31,47 @@
                             </mask>
                         </variation>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB2-LD-667">
+                        <rect key="frame" x="206" y="40" width="100" height="20.5"/>
+                        <color key="backgroundColor" red="0.6137199781742505" green="1" blue="0.064105096163462716" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="ODG-eA-IdD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUe-Nu-Jxr">
+                        <rect key="frame" x="10" y="40" width="100" height="20.5"/>
+                        <color key="backgroundColor" red="0.62852068760432356" green="1" blue="0.08288826971008989" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="pH2-zQ-TpC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="2sL-3N-W9K" secondAttribute="bottom" constant="10" id="1NK-CY-lMj"/>
                     <constraint firstAttribute="trailing" secondItem="2sL-3N-W9K" secondAttribute="trailing" constant="10" id="4ZQ-mJ-Jlk"/>
                     <constraint firstItem="2sL-3N-W9K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="DaN-bx-f0h"/>
+                    <constraint firstItem="ZUe-Nu-Jxr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FDJ-r2-O5E"/>
                     <constraint firstItem="2sL-3N-W9K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="NJQ-Dl-H1I"/>
                     <constraint firstItem="2sL-3N-W9K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="YN1-qE-Lg0"/>
                     <constraint firstAttribute="trailing" secondItem="2sL-3N-W9K" secondAttribute="trailing" constant="10" id="YNZ-ga-Ski"/>
                     <constraint firstAttribute="trailing" secondItem="2sL-3N-W9K" secondAttribute="trailing" constant="10" id="dVv-80-ok8"/>
                     <constraint firstItem="2sL-3N-W9K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dmj-eK-DiK"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2sL-3N-W9K" secondAttribute="trailing" constant="10" id="hLy-Cl-mZ4"/>
+                    <constraint firstItem="ZUe-Nu-Jxr" firstAttribute="top" secondItem="2sL-3N-W9K" secondAttribute="bottom" constant="10" id="jZm-0K-eyL"/>
                     <constraint firstAttribute="bottom" secondItem="2sL-3N-W9K" secondAttribute="bottom" constant="10" id="jza-VF-zua"/>
                     <constraint firstAttribute="trailing" secondItem="2sL-3N-W9K" secondAttribute="trailing" constant="10" id="o1m-QG-V79"/>
+                    <constraint firstAttribute="trailing" secondItem="WB2-LD-667" secondAttribute="trailing" constant="10" id="soD-JG-8wj"/>
+                    <constraint firstItem="WB2-LD-667" firstAttribute="top" secondItem="2sL-3N-W9K" secondAttribute="bottom" constant="10" id="wIY-Yb-1xJ"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="1NK-CY-lMj"/>
                         <exclude reference="4ZQ-mJ-Jlk"/>
                         <exclude reference="DaN-bx-f0h"/>
                         <exclude reference="NJQ-Dl-H1I"/>
@@ -57,7 +83,9 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lb_date" destination="WB2-LD-667" id="Mjl-Av-7jy"/>
                 <outlet property="lb_desc" destination="2sL-3N-W9K" id="rHJ-R5-wlP"/>
+                <outlet property="lb_who" destination="ZUe-Nu-Jxr" id="L6u-WJ-xIG"/>
             </connections>
             <point key="canvasLocation" x="230" y="277"/>
         </tableViewCell>

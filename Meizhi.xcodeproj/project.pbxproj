@@ -163,6 +163,7 @@
 		E12B46C91BA971DC00376FA4 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				E19FDE151BB1510F00B50F1E /* ui */,
 			);
 			path = sdk;
 			sourceTree = "<group>";
@@ -222,6 +223,13 @@
 				E12B47061BAAC33600376FA4 /* DataItem.swift */,
 			);
 			path = entity;
+			sourceTree = "<group>";
+		};
+		E19FDE151BB1510F00B50F1E /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

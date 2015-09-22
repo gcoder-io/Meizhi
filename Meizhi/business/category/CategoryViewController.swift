@@ -28,6 +28,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         println(categoryInfo?.title)
         println("CategoryViewController")
         
+        instanceEstimatedCell()
         initTableView()
         loadData()
     }
@@ -76,18 +77,12 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         return true
     }
     
-//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        println("\(indexPath.row)===estimatedHeight===")
-//        return 40
-//    }
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height = estimatedCellHeight(indexPath)
         println("\(indexPath.row)======\(height)")
         return height ?? 0
     }
-    
-    
+
     /**
     实例化用于计算cell高度的cell
     */
@@ -115,10 +110,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             
             estimatedCell?.lb_desc.text = categoryItem.desc
+            estimatedCell?.lb_who.text = categoryItem.who
+        
             estimatedCell?.layoutIfNeeded()
-            height = CGRectGetMaxY(estimatedCell!.lb_desc.frame) + 10
             
-            categoryItem.cellHeight = height
+            height = CGRectGetMaxY(estimatedCell!.lb_who.frame)
+            
+            categoryItem.cellHeight = height! + 10
         }
         return height
     }
@@ -184,10 +182,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                     let item = DataItem(fromDictionary: dic!)
 //                    if i > 0{
 //                        item.desc = "\(i)===" + list![i-1].desc + item.desc
-//
 //                    }else{
 //                        item.desc = "\(i)===" + item.desc + "这是一条测试数据内容0123456789"
-//
 //                    }
                     list?.append(item)
                 }
