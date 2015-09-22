@@ -50,8 +50,23 @@
                     <view key="view" contentMode="scaleToFill" id="6ph-qh-cQR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="R2Y-2Z-4kz">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="R2Y-2Z-4kz" secondAttribute="trailing" id="P2k-Yf-zjw"/>
+                            <constraint firstItem="R2Y-2Z-4kz" firstAttribute="leading" secondItem="6ph-qh-cQR" secondAttribute="leading" id="mA7-cu-c8r"/>
+                            <constraint firstItem="a3M-Hu-jdR" firstAttribute="top" secondItem="R2Y-2Z-4kz" secondAttribute="bottom" id="mkh-74-e68"/>
+                            <constraint firstItem="R2Y-2Z-4kz" firstAttribute="top" secondItem="EWC-Tj-gIY" secondAttribute="bottom" id="w12-gG-r8h"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="R2Y-2Z-4kz" id="RZ1-yY-VM3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNp-N6-ZTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,7 +85,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BFD-L3-Bem">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -78,8 +93,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BFD-L3-Bem" secondAttribute="trailing" id="6V6-Z9-px7"/>
                             <constraint firstItem="lCx-V7-w64" firstAttribute="top" secondItem="BFD-L3-Bem" secondAttribute="bottom" id="AU8-MH-5nG"/>
+                            <constraint firstItem="BFD-L3-Bem" firstAttribute="top" secondItem="WCZ-H8-e17" secondAttribute="bottom" id="LNk-b3-LpC"/>
                             <constraint firstItem="BFD-L3-Bem" firstAttribute="leading" secondItem="61o-JB-mdV" secondAttribute="leading" id="Yze-Rm-QON"/>
-                            <constraint firstItem="BFD-L3-Bem" firstAttribute="top" secondItem="61o-JB-mdV" secondAttribute="top" id="yJB-5U-X1S"/>
                         </constraints>
                     </view>
                     <connections>

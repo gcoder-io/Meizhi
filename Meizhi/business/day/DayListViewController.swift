@@ -15,8 +15,9 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     private static let PAGE_SIZE = "30"
     private var page = 0
     @IBOutlet weak var tableView: UITableView!
-    private var list:[DayListItem]?
+    private var list:[DataItem]?
     private var cellHeight:CGFloat?
+    private var estimatedCell:DayListCell?
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
         self.categoryInfo = categoryInfo
@@ -41,8 +42,10 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // 计算cell高度
         let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell") as! DayListCell
+        estimatedCell = cell
         cellHeight = cell.iv_image.frame.height + cell.lb_date.frame.height
-        tableView.estimatedRowHeight = cellHeight!
+//        tableView.estimatedRowHeight = cellHeight!
+//        tableView.rowHeight = cellHeight!
     }
     
     // MARK: - UITableViewDataSource
@@ -60,6 +63,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
 
         if let categoryItem = list?[indexPath.row]{
             // fill data.
+            cell.lb_who.text = categoryItem.who
             cell.lb_date.text = categoryItem.desc
             cell.iv_image.sd_setImageWithURL(NSURL(string: categoryItem.url), placeholderImage: UIImage(named: "avatar"))
             
@@ -89,6 +93,11 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height = list?[indexPath.row].cellHeight
+//        estimatedCell?.iv_image.image = UIImage(named: "cell_iv_image")
+//        estimatedCell?.lb_who.text = "测试"
+//        estimatedCell?.lb_date.text = "日期"
+//        var height = estimatedCell?.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+//        println(height)
         return height ?? 0
     }
     
@@ -122,7 +131,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     */
     private func handleResponse(response:NSHTTPURLResponse?, data:NSData?){
         if response?.statusCode == 200 && data != nil{
-            if let list:[DayListItem]? = parseJson(data!){
+            if let list:[DataItem]? = parseJson(data!){
                 self.list = list
                 println("tableView.reloadData=====>")
                 
@@ -138,18 +147,18 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     - returns: [CategoryItem]
     */
-    private func parseJson(data:NSData) -> [DayListItem]?{
-        var list:[DayListItem]? = nil
+    private func parseJson(data:NSData) -> [DataItem]?{
+        var list:[DataItem]? = nil
         
         let json = JSON(data:data)
         let error:Bool = json["error"].boolValue
         let results = json["results"]
         if !error && results != nil && results.count > 0{
-            list = [DayListItem]()
+            list = [DataItem]()
             for(var i=0; i < results.count; i++){
                 let dic = results[i].dictionaryObject
                 if dic != nil{
-                    let item = DayListItem(fromDictionary: dic!)
+                    let item = DataItem(fromDictionary: dic!)
                     list?.append(item)
                 }
             }

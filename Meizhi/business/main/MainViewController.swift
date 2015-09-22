@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
         categoryInfos.append(androidCategoryInfo)
         categoryInfos.append(webCategoryInfo)
         categoryInfos.append(readCategoryInfo)
-        categoryInfos.append(readCategoryInfo)
+        categoryInfos.append(resetCategoryInfo)
         //categoryInfos.append(dayCategoryInfo)
         
         return categoryInfos

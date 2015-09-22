@@ -19,9 +19,11 @@
 		E12B46FE1BAAA89C00376FA4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46FD1BAAA89C00376FA4 /* Constant.swift */; };
 		E12B47001BAAAB3600376FA4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */; };
 		E12B47031BAAABA600376FA4 /* DayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47021BAAABA600376FA4 /* DayListViewController.swift */; };
-		E12B47071BAAC33600376FA4 /* DayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47061BAAC33600376FA4 /* DayListItem.swift */; };
+		E12B47071BAAC33600376FA4 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47061BAAC33600376FA4 /* DataItem.swift */; };
 		E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EF1611BABF73F00152199 /* DayListCell.swift */; };
 		E17EF1641BABF73F00152199 /* DayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17EF1621BABF73F00152199 /* DayListCell.xib */; };
+		E19FDDD21BAFEABB00B50F1E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FDDD01BAFEABB00B50F1E /* CategoryCell.swift */; };
+		E19FDDD31BAFEABB00B50F1E /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19FDDD11BAFEABB00B50F1E /* CategoryCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +55,12 @@
 		E12B46FD1BAAA89C00376FA4 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E12B47021BAAABA600376FA4 /* DayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListViewController.swift; sourceTree = "<group>"; };
-		E12B47061BAAC33600376FA4 /* DayListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListItem.swift; sourceTree = "<group>"; };
+		E12B47061BAAC33600376FA4 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 		E17EF1611BABF73F00152199 /* DayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		E17EF1621BABF73F00152199 /* DayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayListCell.xib; sourceTree = "<group>"; };
 		E17EF1691BAC163D00152199 /* Meizhi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizhi-Bridging-Header.h"; sourceTree = "<group>"; };
+		E19FDDD01BAFEABB00B50F1E /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		E19FDDD11BAFEABB00B50F1E /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,8 @@
 			children = (
 				E12B46FA1BAAA77F00376FA4 /* CategoryInfo.swift */,
 				E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */,
+				E19FDDD01BAFEABB00B50F1E /* CategoryCell.swift */,
+				E19FDDD11BAFEABB00B50F1E /* CategoryCell.xib */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -213,7 +219,7 @@
 		E12B47051BAAC31300376FA4 /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				E12B47061BAAC33600376FA4 /* DayListItem.swift */,
+				E12B47061BAAC33600376FA4 /* DataItem.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19FDDD31BAFEABB00B50F1E /* CategoryCell.xib in Resources */,
 				E12B46AF1BA96BEF00376FA4 /* Main.storyboard in Resources */,
 				E12B46B41BA96BEF00376FA4 /* LaunchScreen.xib in Resources */,
 				E17EF1641BABF73F00152199 /* DayListCell.xib in Resources */,
@@ -372,13 +379,14 @@
 			files = (
 				E12B46D11BA9728000376FA4 /* MainViewController.swift in Sources */,
 				E12B46AC1BA96BEF00376FA4 /* ViewController.swift in Sources */,
-				E12B47071BAAC33600376FA4 /* DayListItem.swift in Sources */,
+				E12B47071BAAC33600376FA4 /* DataItem.swift in Sources */,
 				E12B46AA1BA96BEF00376FA4 /* AppDelegate.swift in Sources */,
 				E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */,
 				E12B46FE1BAAA89C00376FA4 /* Constant.swift in Sources */,
 				E12B47001BAAAB3600376FA4 /* CategoryViewController.swift in Sources */,
 				E12B46FB1BAAA77F00376FA4 /* CategoryInfo.swift in Sources */,
 				E12B47031BAAABA600376FA4 /* DayListViewController.swift in Sources */,
+				E19FDDD21BAFEABB00B50F1E /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

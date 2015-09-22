@@ -11,6 +11,7 @@ import SnapKit
 
 class DayListCell: UITableViewCell {
     @IBOutlet weak var iv_image: UIImageView!
+    @IBOutlet weak var lb_who: UILabel!
     @IBOutlet weak var lb_date: UILabel!
     @IBOutlet weak var view_container: UIView!
     @IBOutlet weak var iv_image_constraint_height: NSLayoutConstraint!
