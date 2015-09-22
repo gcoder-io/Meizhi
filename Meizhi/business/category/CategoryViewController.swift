@@ -18,7 +18,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     private var cellHeight:CGFloat?
     private var estimatedCell:CategoryCell?
     @IBOutlet weak var tableView: UITableView!
-    private var lableArray = [String]()
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
         self.categoryInfo = categoryInfo
@@ -33,19 +32,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         loadData()
     }
     
-    
-    
     private func initTableView(){
         tableView.dataSource = self
         tableView.delegate = self
         
         // 注册xib
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "CategoryCell")
-        
-        // 计算cell高度
-        let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as! CategoryCell
-        estimatedCell = cell
+        tableView.registerNib(nib, forCellReuseIdentifier: "CategoryCell")
     }
     
     // MARK: - UITableViewDataSource
@@ -68,18 +61,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.lb_desc.text = categoryItem.desc
             
             cell.layoutIfNeeded()
-    
-            var height:CGFloat? = categoryItem.cellHeight
-            if height == nil{
-                height = CGRectGetMaxY(cell.lb_desc.frame) + 10
-                println("\(indexPath.row)===height=============>\(height)")
-                
-                // 计算cell的高度
-                categoryItem.cellHeight = height
-            }
         }
-        println("\(cell.frame.width)===\(cell.frame.height)")
-
         return cell
     }
     
@@ -94,18 +76,51 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         return true
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
-    }
+//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        println("\(indexPath.row)===estimatedHeight===")
+//        return 40
+//    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var height = estimatedCellHeight(indexPath)
+        println("\(indexPath.row)======\(height)")
+        return height ?? 0
+    }
+    
+    
+    /**
+    实例化用于计算cell高度的cell
+    */
+    private func instanceEstimatedCell(){
+        let cell = NSBundle.mainBundle().loadNibNamed("CategoryCell", owner: nil, options: nil).last as! CategoryCell
+        // 不要使用以下方式，可能会造成内存泄露.
+        //        let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as! CategoryCell
+        estimatedCell = cell
+    }
+    
+    /**
+    
+    计算cell高度
+    
+    - parameter indexPath:
+    
+    - returns:
+    */
+    private func estimatedCellHeight(indexPath: NSIndexPath) -> CGFloat?{
         var height:CGFloat?
         if let categoryItem = list?[indexPath.row]{
             height = categoryItem.cellHeight
+            if height != nil{
+                return height
+            }
+            
+            estimatedCell?.lb_desc.text = categoryItem.desc
+            estimatedCell?.layoutIfNeeded()
+            height = CGRectGetMaxY(estimatedCell!.lb_desc.frame) + 10
+            
+            categoryItem.cellHeight = height
         }
-        
-        println("\(indexPath.row)======\(height)")
-        return height ?? 0
+        return height
     }
 
     
@@ -167,13 +182,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                 let dic = results[i].dictionaryObject
                 if dic != nil{
                     let item = DataItem(fromDictionary: dic!)
-                    if i > 0{
-                        item.desc = "\(i)===" + list![i-1].desc + item.desc
-
-                    }else{
-                        item.desc = "\(i)===" + item.desc + "这是一条测试数据内容0123456789"
-
-                    }
+//                    if i > 0{
+//                        item.desc = "\(i)===" + list![i-1].desc + item.desc
+//
+//                    }else{
+//                        item.desc = "\(i)===" + item.desc + "这是一条测试数据内容0123456789"
+//
+//                    }
                     list?.append(item)
                 }
             }
