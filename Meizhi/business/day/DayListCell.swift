@@ -14,17 +14,11 @@ class DayListCell: UITableViewCell {
     @IBOutlet weak var lb_who: UILabel!
     @IBOutlet weak var lb_date: UILabel!
     @IBOutlet weak var view_container: UIView!
-    @IBOutlet weak var iv_image_constraint_height: NSLayoutConstraint!
   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        iv_image.removeConstraint(iv_image_constraint_height)
-        iv_image.snp_makeConstraints { (make) -> Void in
-            make.height.equalTo(iv_image.snp_width)
-        }
-        iv_image.layoutIfNeeded()
+ 
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

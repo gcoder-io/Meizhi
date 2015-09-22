@@ -68,13 +68,15 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.lb_desc.text = categoryItem.desc
             
             cell.layoutIfNeeded()
-            
-            var height = CGRectGetMaxY(cell.lb_desc.frame) + 10
-            println("\(indexPath.row)===height=============>\(height)")
-            
-            // 计算cell的高度
-            categoryItem.cellHeight = height
-            
+    
+            var height:CGFloat? = categoryItem.cellHeight
+            if height == nil{
+                height = CGRectGetMaxY(cell.lb_desc.frame) + 10
+                println("\(indexPath.row)===height=============>\(height)")
+                
+                // 计算cell的高度
+                categoryItem.cellHeight = height
+            }
         }
         println("\(cell.frame.width)===\(cell.frame.height)")
 
