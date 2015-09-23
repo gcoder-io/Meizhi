@@ -9,7 +9,9 @@
 import UIKit
 import SnapKit
 
-class CategoryCell: UITableViewCell {
+class CategoryCell: UITableViewCell,TableViewCellAdapter {
+    
+    typealias Model = DataItem
 
     @IBOutlet weak var lb_desc: UILabel!
     @IBOutlet weak var lb_who: UILabel!
@@ -25,4 +27,15 @@ class CategoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func bindData(model:DataItem?, indexPath: NSIndexPath){
+        // fill data.
+        if model != nil{
+            lb_who.text = model!.who
+            lb_date.text = model!.publishedAt
+            lb_desc.text = model!.desc
+            
+            layoutIfNeeded()
+        }
+    }
+
 }

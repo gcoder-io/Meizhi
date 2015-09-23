@@ -10,9 +10,10 @@ import UIKit
 import PageMenu
 import SnapKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController ,CAPSPageMenuDelegate{
     
-    var pageMenu : CAPSPageMenu?
+    private var pageMenu : CAPSPageMenu?
+    private var currentViewController:UIViewController?
 
 
     override func viewDidLoad() {
@@ -83,18 +84,30 @@ class MainViewController: UIViewController {
         
         // Initialize page menu with controller array, frame, and optional parameters
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 0.0, parentView.frame.width, parentView.frame.height), pageMenuOptions: parameters)
+        pageMenu?.delegate = self
         
         // Lastly add page menu as subview of base view controller view
         // or use pageMenu controller in you view hierachy as desired
         parentView.addSubview(pageMenu!.view)
+        
+        currentViewController = controllerArray[0]
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func didMoveToPage(controller: UIViewController, index: Int){
+        currentViewController = controller
+    }
+
+    // 处理旋转屏幕，回调child controller
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        println("MainViewController=====================viewWillTransitionToSize")
+        currentViewController?.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransitionToSize(size, withTransitionCoordinator:coordinator)
+    }
 
     /*
     // MARK: - Navigation

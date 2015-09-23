@@ -9,7 +9,9 @@
 import UIKit
 import SnapKit
 
-class DayListCell: UITableViewCell {
+class DayListCell: UITableViewCell,TableViewCellAdapter{
+    typealias Model = DataItem
+
     @IBOutlet weak var iv_image: UIImageView!
     @IBOutlet weak var lb_who: UILabel!
     @IBOutlet weak var lb_date: UILabel!
@@ -27,4 +29,14 @@ class DayListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func bindData(model:DataItem?, indexPath: NSIndexPath){
+        // fill data.
+        if model != nil{
+            lb_who.text = model!.who
+            lb_date.text = model!.desc
+            iv_image.sd_setImageWithURL(NSURL(string: model!.url), placeholderImage: UIImage(named: "avatar"))
+            
+            layoutIfNeeded()
+        }
+    }
 }

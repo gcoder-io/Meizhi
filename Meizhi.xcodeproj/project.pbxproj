@@ -24,6 +24,8 @@
 		E17EF1641BABF73F00152199 /* DayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17EF1621BABF73F00152199 /* DayListCell.xib */; };
 		E19FDDD21BAFEABB00B50F1E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FDDD01BAFEABB00B50F1E /* CategoryCell.swift */; };
 		E19FDDD31BAFEABB00B50F1E /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19FDDD11BAFEABB00B50F1E /* CategoryCell.xib */; };
+		E19FDE171BB1516C00B50F1E /* TableViewCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FDE161BB1516C00B50F1E /* TableViewCellHandler.swift */; };
+		E19FDE191BB157DA00B50F1E /* TableViewCellAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FDE181BB157DA00B50F1E /* TableViewCellAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		E17EF1691BAC163D00152199 /* Meizhi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizhi-Bridging-Header.h"; sourceTree = "<group>"; };
 		E19FDDD01BAFEABB00B50F1E /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		E19FDDD11BAFEABB00B50F1E /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		E19FDE161BB1516C00B50F1E /* TableViewCellHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellHandler.swift; sourceTree = "<group>"; };
+		E19FDE181BB157DA00B50F1E /* TableViewCellAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,8 @@
 		E19FDE151BB1510F00B50F1E /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				E19FDE161BB1516C00B50F1E /* TableViewCellHandler.swift */,
+				E19FDE181BB157DA00B50F1E /* TableViewCellAdapter.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -386,8 +392,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12B46D11BA9728000376FA4 /* MainViewController.swift in Sources */,
+				E19FDE191BB157DA00B50F1E /* TableViewCellAdapter.swift in Sources */,
 				E12B46AC1BA96BEF00376FA4 /* ViewController.swift in Sources */,
 				E12B47071BAAC33600376FA4 /* DataItem.swift in Sources */,
+				E19FDE171BB1516C00B50F1E /* TableViewCellHandler.swift in Sources */,
 				E12B46AA1BA96BEF00376FA4 /* AppDelegate.swift in Sources */,
 				E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */,
 				E12B46FE1BAAA89C00376FA4 /* Constant.swift in Sources */,

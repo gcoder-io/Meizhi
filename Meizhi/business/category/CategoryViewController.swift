@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellHandler{
     private var categoryInfo:CategoryInfo?
     private var page = 0
     private static let PAGE_SIZE = "30"
@@ -28,7 +28,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         println(categoryInfo?.title)
         println("CategoryViewController")
         
-        instanceEstimatedCell()
+        estimatedCell = instanceEstimatedCell()
         initTableView()
         loadData()
     }
@@ -54,15 +54,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
             as! CategoryCell
-        
-        if let categoryItem = list?[indexPath.row]{
-            // fill data.
-//            cell.lb_who.text = categoryItem.who
-//            cell.lb_date.text = categoryItem.publishedAt
-            cell.lb_desc.text = categoryItem.desc
-            
-            cell.layoutIfNeeded()
-        }
+        var data = list?[indexPath.row]
+        cell.bindData(data, indexPath: indexPath)
         return cell
     }
     
@@ -80,33 +73,39 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height = estimatedCellHeight(indexPath)
         println("\(indexPath.row)======\(height)")
-        return height ?? 0
+        return height
     }
-
-    /**
-    实例化用于计算cell高度的cell
-    */
-    private func instanceEstimatedCell(){
-        let cell = NSBundle.mainBundle().loadNibNamed("CategoryCell", owner: nil, options: nil).last as! CategoryCell
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 67.5
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        println("CategoryViewController=====================viewWillTransitionToSize")
+        if list != nil{
+            for item in list!{
+                item.cellHeight = nil
+            }
+        }
+        tableView.reloadData()
+        super.viewWillTransitionToSize(size, withTransitionCoordinator:coordinator)
+    }
+    
+    // MARK: - TableViewCellHandler
+   
+    func instanceEstimatedCell<CategoryCell>() -> CategoryCell?{
+        var cell:CategoryCell = NSBundle.mainBundle().loadNibNamed("CategoryCell", owner: nil, options: nil).last as! CategoryCell
         // 不要使用以下方式，可能会造成内存泄露.
         //        let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as! CategoryCell
-        estimatedCell = cell
+        return cell
     }
     
-    /**
-    
-    计算cell高度
-    
-    - parameter indexPath:
-    
-    - returns:
-    */
-    private func estimatedCellHeight(indexPath: NSIndexPath) -> CGFloat?{
+    func estimatedCellHeight(indexPath: NSIndexPath) -> CGFloat{
         var height:CGFloat?
         if let categoryItem = list?[indexPath.row]{
             height = categoryItem.cellHeight
             if height != nil{
-                return height
+                return height ?? 0
             }
             
             estimatedCell?.lb_desc.text = categoryItem.desc
@@ -114,11 +113,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
             estimatedCell?.layoutIfNeeded()
             
-            height = CGRectGetMaxY(estimatedCell!.lb_who.frame)
+            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 10
             
-            categoryItem.cellHeight = height! + 10
+            categoryItem.cellHeight = height
         }
-        return height
+        return height ?? 0
     }
 
     
@@ -180,11 +179,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                 let dic = results[i].dictionaryObject
                 if dic != nil{
                     let item = DataItem(fromDictionary: dic!)
-//                    if i > 0{
-//                        item.desc = "\(i)===" + list![i-1].desc + item.desc
-//                    }else{
-//                        item.desc = "\(i)===" + item.desc + "这是一条测试数据内容0123456789"
-//                    }
+                    if i > 0{
+                        item.desc = "\(i)===" + list![i-1].desc + item.desc
+                    }else{
+                        item.desc = "\(i)===" + item.desc + "这是一条测试数据内容0123456789"
+                    }
                     list?.append(item)
                 }
             }

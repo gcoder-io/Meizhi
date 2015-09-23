@@ -10,13 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class DayListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DayListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellHandler {
     private var categoryInfo:CategoryInfo?
     private static let PAGE_SIZE = "30"
     private var page = 0
     @IBOutlet weak var tableView: UITableView!
     private var list:[DataItem]?
-    private var cellHeight:CGFloat?
     private var estimatedCell:DayListCell?
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
@@ -28,6 +27,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         println(categoryInfo?.title)
         println("DayListViewController")
         
+        estimatedCell = instanceEstimatedCell()
         initTableView()
         loadData()
     }
@@ -39,13 +39,6 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         // 注册xib
         let nib = UINib(nibName: "DayListCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "DayListCell")
-        
-        // 计算cell高度
-        let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell") as! DayListCell
-        estimatedCell = cell
-        cellHeight = cell.iv_image.frame.height + cell.lb_date.frame.height
-//        tableView.estimatedRowHeight = cellHeight!
-//        tableView.rowHeight = cellHeight!
     }
     
     // MARK: - UITableViewDataSource
@@ -60,18 +53,8 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
 
         let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell", forIndexPath: indexPath)
             as! DayListCell
-
-        if let categoryItem = list?[indexPath.row]{
-            // fill data.
-            cell.lb_who.text = categoryItem.who
-            cell.lb_date.text = categoryItem.desc
-            cell.iv_image.sd_setImageWithURL(NSURL(string: categoryItem.url), placeholderImage: UIImage(named: "avatar"))
-            
-            // 计算cell的高度
-            if categoryItem.cellHeight == nil{
-                categoryItem.cellHeight = self.cellHeight
-            }
-        }
+        var data = list?[indexPath.row]
+        cell.bindData(data, indexPath: indexPath)
 
         return cell
     }
@@ -87,19 +70,75 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         return true
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var height = estimatedCellHeight(indexPath)
+        return height
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var height = list?[indexPath.row].cellHeight
-//        estimatedCell?.iv_image.image = UIImage(named: "cell_iv_image")
-//        estimatedCell?.lb_who.text = "测试"
-//        estimatedCell?.lb_date.text = "日期"
-//        var height = estimatedCell?.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-//        println(height)
+    // 横竖屏切换
+    override func shouldAutorotate() -> Bool {
+        println("shouldAutorotate=====>")
+        if list != nil{
+            for item in list!{
+                item.cellHeight = nil
+            }
+        }
+        return true
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        println("DayListViewController=====================viewWillTransitionToSize")
+        if list != nil{
+            for item in list!{
+                item.cellHeight = nil
+            }
+        }
+        super.viewWillTransitionToSize(size, withTransitionCoordinator:coordinator)
+    }
+    
+    /**
+    
+    实例化用于计算的TableViewCell
+    
+    - returns: 自定义的TableViewCell
+    */
+    func instanceEstimatedCell <DayListCell> () -> DayListCell?{
+        var cell:DayListCell = NSBundle.mainBundle().loadNibNamed("DayListCell", owner: nil, options: nil).last as! DayListCell
+        // 不要使用以下方式，可能会造成内存泄露.
+        //        let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell") as! DayListCell
+        return cell
+    }
+    
+    
+    /**
+    
+    计算cell高度
+    
+    - parameter indexPath:
+    
+    - returns:
+    */
+    func estimatedCellHeight(indexPath: NSIndexPath) -> CGFloat{
+        var height:CGFloat?
+        if let categoryItem = list?[indexPath.row]{
+            height = categoryItem.cellHeight
+            if height != nil{
+                return height ?? 0
+            }
+            
+            estimatedCell?.iv_image.image = UIImage(named: "avatar")
+            estimatedCell?.lb_date.text = categoryItem.desc
+            estimatedCell?.lb_who.text = categoryItem.who
+            
+            estimatedCell?.layoutIfNeeded()
+            
+            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 3
+            categoryItem.cellHeight = height
+            println(height)
+        }
         return height ?? 0
     }
+
     
     // MARK: - Network
     

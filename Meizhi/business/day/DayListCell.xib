@@ -18,26 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="382" height="415.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq3-FT-7SS">
-                                <rect key="frame" x="272" y="392" width="100" height="30"/>
+                                <rect key="frame" x="272" y="392" width="100" height="20.5"/>
+                                <color key="backgroundColor" red="1" green="0.73122288130000002" blue="0.133041611" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="XMS-9W-6ns"/>
-                                    <constraint firstAttribute="height" constant="30" id="f5b-ME-v9b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuC-ng-EbF">
-                                <rect key="frame" x="10" y="392" width="100" height="30"/>
+                                <rect key="frame" x="10" y="392" width="100" height="20.5"/>
+                                <color key="backgroundColor" red="1" green="0.73122288130000002" blue="0.133041611" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Km9-dR-7v2"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="bo3-9X-Edh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpD-2y-qOU">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpD-2y-qOU">
                                 <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
                                 <constraints>
                                     <constraint firstAttribute="height" secondItem="SpD-2y-qOU" secondAttribute="width" multiplier="1:1" id="vfG-fD-249"/>
@@ -72,6 +72,9 @@
             <point key="canvasLocation" x="283" y="368"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="avatar" width="200" height="200"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

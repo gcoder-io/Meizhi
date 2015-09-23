@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+protocol TableViewCellAdapter{
+    
+    typealias Model
+    
+    /**
+    Model和View数据绑定
+    
+    - parameter model:
+    - parameter indexPath:
+    */
+    func bindData(model:Model?, indexPath: NSIndexPath)
+}
