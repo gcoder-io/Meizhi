@@ -33,6 +33,9 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func initTableView(){
+        // 去除cell分割线
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -115,7 +118,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
             
             estimatedCell?.layoutIfNeeded()
             
-            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 1
+            height = CGRectGetMaxY(estimatedCell!.lb_who.frame)
             categoryItem.cellHeight = height
             println(height)
         }

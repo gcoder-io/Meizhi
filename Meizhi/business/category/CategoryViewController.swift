@@ -34,6 +34,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     private func initTableView(){
+        // 设置没有数据的cell不显示分割线
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        // 设置分割线颜色
+//        tableView.separatorColor = UIColor.orangeColor()
+//        tableView.separatorEffect
+//        tableView.separatorInset
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -82,6 +89,14 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator:coordinator)
         println("CategoryViewController=====================viewWillTransitionToSize")
+    }
+    
+    
+    // 处理cell line左边界不全问题
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.preservesSuperviewLayoutMargins = false
+        cell.layoutMargins = UIEdgeInsetsZero
     }
     
     // MARK: - TableViewCellHandler
@@ -174,11 +189,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
                 let dic = results[i].dictionaryObject
                 if dic != nil{
                     let item = DataItem(fromDictionary: dic!)
-                    if i > 0{
-                        item.desc = "\(i)===" + list![i-1].desc + item.desc
-                    }else{
-                        item.desc = "\(i)===" + item.desc + "这是一条测试数据内容0123456789"
-                    }
+//                    if i > 0{
+//                        item.desc = "\(i)===" + list![i-1].desc + item.desc
+//                    }else{
+//                        item.desc = "\(i)===" + item.desc + "这是一条测试数据内容0123456789"
+//                    }
                     list?.append(item)
                 }
             }
