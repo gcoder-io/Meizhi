@@ -15,7 +15,7 @@ class DayListCell: UITableViewCell,TableViewCellAdapter{
     @IBOutlet weak var iv_image: UIImageView!
     @IBOutlet weak var lb_who: UILabel!
     @IBOutlet weak var lb_date: UILabel!
-    @IBOutlet weak var view_container: UIView!
+
   
     override func awakeFromNib() {
         super.awakeFromNib()
