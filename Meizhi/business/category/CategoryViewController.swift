@@ -72,7 +72,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height = estimatedCellHeight(indexPath)
-        println("\(indexPath.row)======\(height)")
         return height
     }
     
@@ -81,14 +80,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        println("CategoryViewController=====================viewWillTransitionToSize")
-        if list != nil{
-            for item in list!{
-                item.cellHeight = nil
-            }
-        }
-        tableView.reloadData()
         super.viewWillTransitionToSize(size, withTransitionCoordinator:coordinator)
+        println("CategoryViewController=====================viewWillTransitionToSize")
     }
     
     // MARK: - TableViewCellHandler
@@ -116,6 +109,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 10
             
             categoryItem.cellHeight = height
+            
+            println("\(indexPath.row)======\(height)")
         }
         return height ?? 0
     }

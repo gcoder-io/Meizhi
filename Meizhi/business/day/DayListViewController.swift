@@ -75,25 +75,8 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         return height
     }
     
-    // 横竖屏切换
-    override func shouldAutorotate() -> Bool {
-        println("shouldAutorotate=====>")
-        if list != nil{
-            for item in list!{
-                item.cellHeight = nil
-            }
-        }
-        return true
-    }
-    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("DayListViewController=====================viewWillTransitionToSize")
-        if list != nil{
-            for item in list!{
-                item.cellHeight = nil
-            }
-        }
-        super.viewWillTransitionToSize(size, withTransitionCoordinator:coordinator)
     }
     
     /**
