@@ -33,3 +33,6 @@ pod "PagingMenuController"
 
 # pod 'PageMenu'
 pod 'PageMenu'
+
+# MJRefresh 下拉刷新
+pod 'MJRefresh'
