@@ -115,7 +115,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
             
             estimatedCell?.layoutIfNeeded()
             
-            height = CGRectGetMaxY(estimatedCell!.lb_who.frame)
+            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 1
             categoryItem.cellHeight = height
             println(height)
         }
