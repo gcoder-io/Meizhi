@@ -87,7 +87,7 @@ extension DayListTableViewController:TableViewCellHandler{
             
             estimatedCell?.layoutIfNeeded()
             
-            height = CGRectGetMaxY(estimatedCell!.lb_who.frame)
+            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 1
             categoryItem.cellHeight = height
             
             print(height)
