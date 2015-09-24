@@ -9,14 +9,17 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MJRefresh
 
 class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellHandler{
     private var categoryInfo:CategoryInfo?
-    private var page = 0
-    private static let PAGE_SIZE = "30"
+    private var page = 1
+    private static let PAGE_SIZE = "20"
     private var list:[DataItem]?
     private var cellHeight:CGFloat?
     private var estimatedCell:CategoryCell?
+    private var refreshType:RefreshType = RefreshType.PULL_DOWN
+    
     @IBOutlet weak var tableView: UITableView!
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
@@ -30,7 +33,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
         estimatedCell = instanceEstimatedCell()
         initTableView()
-        loadData()
+        initMJRefresh()
     }
     
     private func initTableView(){
@@ -47,6 +50,23 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         // 注册xib
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "CategoryCell")
+    }
+    
+    private func initMJRefresh(){
+        weak var weakSelf:CategoryViewController? = self
+        tableView.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
+           weakSelf?.refreshType = RefreshType.PULL_DOWN
+           weakSelf?.page = 1
+           weakSelf?.loadData()
+        })
+        var footer:MJRefreshAutoNormalFooter = MJRefreshAutoNormalFooter(refreshingBlock: { () -> Void in
+            weakSelf?.refreshType = RefreshType.LOAD_MORE
+            weakSelf?.loadData()
+        })
+        footer.automaticallyRefresh = false
+        tableView.footer = footer
+        
+        tableView.header.beginRefreshing()
     }
     
     // MARK: - UITableViewDataSource
@@ -91,7 +111,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         println("CategoryViewController=====================viewWillTransitionToSize")
     }
     
-    
     // 处理cell line左边界不全问题
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.separatorInset = UIEdgeInsetsZero
@@ -133,16 +152,28 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: - Network
     
+    // 停止刷新
+    private func endRefreshing(){
+        if refreshType == RefreshType.PULL_DOWN{
+            tableView.header.endRefreshing()
+        }else{
+            tableView.footer.endRefreshing()
+        }
+    }
+    
     /**
     从网络/本地加载数据
     */
     private func loadData(){
         if categoryInfo == nil || categoryInfo?.url == nil{
+            endRefreshing()
             return
         }
         var requestUrl:String = categoryInfo!.url + CategoryViewController.PAGE_SIZE + "/" + String(page)
+        println("requestUrl===\(requestUrl)")
         var url:String? = requestUrl.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())
         if url == nil{
+            endRefreshing()
             return
         }
         
@@ -162,12 +193,28 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     private func handleResponse(response:NSHTTPURLResponse?, data:NSData?){
         if response?.statusCode == 200 && data != nil{
             if let list:[DataItem]? = parseJson(data!){
-                self.list = list
+                if refreshType == RefreshType.PULL_DOWN{
+                    self.list = list
+                }else{
+                    if self.list == nil{
+                        self.list = [DataItem]()
+                    }
+                    self.list? += list!
+                }
                 println("tableView.reloadData=====>")
                 
                 tableView.reloadData()
+                
+                page += 1
+            }else{
+                // no data.
+                if refreshType == RefreshType.LOAD_MORE{
+                    tableView.footer.noticeNoMoreData()
+                }
             }
         }
+        
+        endRefreshing()
     }
     
     /**

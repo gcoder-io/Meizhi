@@ -20,6 +20,8 @@
 		E12B47001BAAAB3600376FA4 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */; };
 		E12B47031BAAABA600376FA4 /* DayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47021BAAABA600376FA4 /* DayListViewController.swift */; };
 		E12B47071BAAC33600376FA4 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B47061BAAC33600376FA4 /* DataItem.swift */; };
+		E14C44621BB2A5B000D343EA /* RefreshType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C44611BB2A5B000D343EA /* RefreshType.swift */; };
+		E15ED9651BB3A54B004E38E2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED9641BB3A54B004E38E2 /* WebViewController.swift */; };
 		E17EF1631BABF73F00152199 /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EF1611BABF73F00152199 /* DayListCell.swift */; };
 		E17EF1641BABF73F00152199 /* DayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17EF1621BABF73F00152199 /* DayListCell.xib */; };
 		E19FDDD21BAFEABB00B50F1E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FDDD01BAFEABB00B50F1E /* CategoryCell.swift */; };
@@ -58,6 +60,8 @@
 		E12B46FF1BAAAB3600376FA4 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E12B47021BAAABA600376FA4 /* DayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListViewController.swift; sourceTree = "<group>"; };
 		E12B47061BAAC33600376FA4 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
+		E14C44611BB2A5B000D343EA /* RefreshType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshType.swift; sourceTree = "<group>"; };
+		E15ED9641BB3A54B004E38E2 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E17EF1611BABF73F00152199 /* DayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		E17EF1621BABF73F00152199 /* DayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayListCell.xib; sourceTree = "<group>"; };
 		E17EF1691BAC163D00152199 /* Meizhi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizhi-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 			children = (
 				E19FDE161BB1516C00B50F1E /* TableViewCellHandler.swift */,
 				E19FDE181BB157DA00B50F1E /* TableViewCellAdapter.swift */,
+				E14C44611BB2A5B000D343EA /* RefreshType.swift */,
+				E15ED9641BB3A54B004E38E2 /* WebViewController.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -402,6 +408,8 @@
 				E12B47001BAAAB3600376FA4 /* CategoryViewController.swift in Sources */,
 				E12B46FB1BAAA77F00376FA4 /* CategoryInfo.swift in Sources */,
 				E12B47031BAAABA600376FA4 /* DayListViewController.swift in Sources */,
+				E15ED9651BB3A54B004E38E2 /* WebViewController.swift in Sources */,
+				E14C44621BB2A5B000D343EA /* RefreshType.swift in Sources */,
 				E19FDDD21BAFEABB00B50F1E /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

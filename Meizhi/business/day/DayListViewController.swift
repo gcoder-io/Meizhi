@@ -9,15 +9,17 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MJRefresh
 
 class DayListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellHandler {
     private var categoryInfo:CategoryInfo?
-    private static let PAGE_SIZE = "30"
+    private static let PAGE_SIZE = "20"
     private var page = 0
     @IBOutlet weak var tableView: UITableView!
     private var list:[DataItem]?
     private var estimatedCell:DayListCell?
-    
+    private var refreshType:RefreshType = RefreshType.PULL_DOWN
+
     func setCategoryInfo(categoryInfo:CategoryInfo){
         self.categoryInfo = categoryInfo
     }
@@ -29,7 +31,7 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         
         estimatedCell = instanceEstimatedCell()
         initTableView()
-        loadData()
+        initMJRefresh()
     }
     
     private func initTableView(){
@@ -42,6 +44,23 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
         // 注册xib
         let nib = UINib(nibName: "DayListCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "DayListCell")
+    }
+    
+    private func initMJRefresh(){
+        weak var weakSelf:DayListViewController? = self
+        tableView.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
+            weakSelf?.refreshType = RefreshType.PULL_DOWN
+            weakSelf?.page = 1
+            weakSelf?.loadData()
+        })
+        var footer:MJRefreshAutoNormalFooter = MJRefreshAutoNormalFooter(refreshingBlock: { () -> Void in
+            weakSelf?.refreshType = RefreshType.LOAD_MORE
+            weakSelf?.loadData()
+        })
+        footer.automaticallyRefresh = false
+        tableView.footer = footer
+        
+        tableView.header.beginRefreshing()
     }
     
     // MARK: - UITableViewDataSource
@@ -128,16 +147,27 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Network
     
+    // 停止刷新
+    private func endRefreshing(){
+        if refreshType == RefreshType.PULL_DOWN{
+            tableView.header.endRefreshing()
+        }else{
+            tableView.footer.endRefreshing()
+        }
+    }
+    
     /**
     从网络/本地加载数据
     */
     private func loadData(){
         if categoryInfo == nil || categoryInfo?.url == nil{
+            endRefreshing()
             return
         }
         var requestUrl:String = categoryInfo!.url + DayListViewController.PAGE_SIZE + "/" + String(page)
         var url:String? = requestUrl.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())
         if url == nil{
+            endRefreshing()
             return
         }
         
@@ -157,12 +187,27 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     private func handleResponse(response:NSHTTPURLResponse?, data:NSData?){
         if response?.statusCode == 200 && data != nil{
             if let list:[DataItem]? = parseJson(data!){
-                self.list = list
+                if refreshType == RefreshType.PULL_DOWN{
+                    self.list = list
+                }else{
+                    if self.list == nil{
+                        self.list = [DataItem]()
+                    }
+                    self.list? += list!
+                }
+
                 println("tableView.reloadData=====>")
                 
                 tableView.reloadData()
+                page += 1
+            }else{
+                // no data.
+                if refreshType == RefreshType.LOAD_MORE{
+                    tableView.footer.noticeNoMoreData()
+                }
             }
         }
+        endRefreshing()
     }
     
     /**
