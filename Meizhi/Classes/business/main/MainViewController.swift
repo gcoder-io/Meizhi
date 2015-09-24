@@ -10,9 +10,11 @@ import UIKit
 
 // 应用程序入口
 class MainViewController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 计算tabBar高度，为设置tableview contentInset做准备
+        Constant.tabBarHeight = tabBar.frame.height
         initChildViewControllers()
     }
     

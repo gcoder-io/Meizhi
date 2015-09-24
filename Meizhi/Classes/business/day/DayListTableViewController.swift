@@ -46,6 +46,9 @@ class DayListTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        // 设置tableView显示区域
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, Constant.tabBarHeight ?? 0 , 0)
+        
         // 注册xib
         let nib = UINib(nibName: "DayListCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "DayListCell")
@@ -120,7 +123,7 @@ extension DayListTableViewController{
             weakSelf?.refreshType = RefreshType.LOAD_MORE
             weakSelf?.loadData()
         })
-        footer.automaticallyRefresh = false
+        footer.automaticallyRefresh = true
         tableView.footer = footer
         
         tableView.header.beginRefreshing()

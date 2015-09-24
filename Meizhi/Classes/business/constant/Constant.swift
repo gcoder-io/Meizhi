@@ -19,5 +19,7 @@ public class Constant{
     
     /// ViewController的背景颜色
     public static let BACKGROUND_COLOR: UIColor = UIColor.whiteColor()
+    
+    public static var tabBarHeight:CGFloat?
 
 }
