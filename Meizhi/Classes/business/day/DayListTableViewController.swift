@@ -25,19 +25,6 @@ class DayListTableViewController: UITableViewController {
         initTableView()
         initMJRefresh()
     }
-    
-    /**
-    
-    实例化用于计算的TableViewCell
-    
-    - returns: 自定义的TableViewCell
-    */
-    func instanceEstimatedCell <DayListCell> () -> DayListCell?{
-        let cell:DayListCell = NSBundle.mainBundle().loadNibNamed("DayListCell", owner: nil, options: nil).last as! DayListCell
-        // 不要使用以下方式，可能会造成内存泄露.
-        //        let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell") as! DayListCell
-        return cell
-    }
 
     private func initTableView(){
         // 去除cell分割线
@@ -77,7 +64,7 @@ class DayListTableViewController: UITableViewController {
 extension DayListTableViewController:TableViewCellHandler{
     
     // 实例化用于计算的TableViewCell
-    func instanceEstimatedCell() -> DayListCell?{
+    func instanceEstimatedCell<DayListCell>() -> DayListCell?{
         let cell:DayListCell = NSBundle.mainBundle().loadNibNamed("DayListCell", owner: nil, options: nil).last as! DayListCell
         // 不要使用以下方式，可能会造成内存泄露.
         //        let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell") as! DayListCell
