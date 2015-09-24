@@ -19,9 +19,14 @@ class DayListViewController: UIViewController, UITableViewDataSource, UITableVie
     private var list:[DataItem]?
     private var estimatedCell:DayListCell?
     private var refreshType:RefreshType = RefreshType.PULL_DOWN
-
+    private weak var parentNavigationController:UINavigationController?
+    
     func setCategoryInfo(categoryInfo:CategoryInfo){
         self.categoryInfo = categoryInfo
+    }
+    
+    func setParentNavigationController(parentNavigationController:UINavigationController?){
+        self.parentNavigationController = parentNavigationController
     }
     
     override func viewDidLoad() {

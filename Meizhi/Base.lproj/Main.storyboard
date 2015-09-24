@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="106" y="272"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="p1n-Ac-wKp">
             <objects>
-                <viewController id="piJ-Ch-NqY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" id="piJ-Ch-NqY" customClass="WebViewController" customModule="Meizhi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K8q-oD-oXl"/>
                         <viewControllerLayoutGuide type="bottom" id="REx-hV-Mq1"/>
@@ -64,6 +64,9 @@
                             <constraint firstAttribute="trailing" secondItem="5mb-WK-0Y7" secondAttribute="trailing" id="r4P-bT-BNd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="5mb-WK-0Y7" id="rLd-c5-N2M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cx5-oh-3ff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

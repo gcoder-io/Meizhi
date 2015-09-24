@@ -18,7 +18,7 @@ class MainViewController: UIViewController ,CAPSPageMenuDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("MainViewController=====")
+        println("MainViewController=====\(navigationController)")
         
         self.title = "Meizhi"
         initViews()
@@ -53,6 +53,7 @@ class MainViewController: UIViewController ,CAPSPageMenuDelegate{
         var daylistCategoryInfo = CategoryInfo(title: "每日一弹", url: Constant.URL_DAY_LIST)
         daylistViewController.title = daylistCategoryInfo.title
         daylistViewController.setCategoryInfo(daylistCategoryInfo)
+        daylistViewController.setParentNavigationController(navigationController)
         controllerArray.append(daylistViewController)
 
         // categoryInfos
@@ -61,6 +62,7 @@ class MainViewController: UIViewController ,CAPSPageMenuDelegate{
             let cateViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CategoryViewController") as! CategoryViewController
             cateViewController.title = info.title
             cateViewController.setCategoryInfo(info)
+            cateViewController.setParentNavigationController(navigationController)
             controllerArray.append(cateViewController)
         }
 

@@ -19,11 +19,16 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     private var cellHeight:CGFloat?
     private var estimatedCell:CategoryCell?
     private var refreshType:RefreshType = RefreshType.PULL_DOWN
+    private weak var parentNavigationController:UINavigationController?
     
     @IBOutlet weak var tableView: UITableView!
     
     func setCategoryInfo(categoryInfo:CategoryInfo){
         self.categoryInfo = categoryInfo
+    }
+    
+    func setParentNavigationController(parentNavigationController:UINavigationController?){
+        self.parentNavigationController = parentNavigationController
     }
     
     override func viewDidLoad() {
@@ -88,9 +93,14 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        //        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        //        navigationController?.pushViewController(detailViewController, animated: true)
+        // 打开详情页
+        if list != nil && indexPath.row < list?.count{
+            let dataItem = list![indexPath.row]
+            let webViewController = storyboard?.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
+            webViewController.setUrl(dataItem.url)
+            println("打开详情页=====>\(parentNavigationController)")
+            parentNavigationController?.pushViewController(webViewController, animated: true)
+        }
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
