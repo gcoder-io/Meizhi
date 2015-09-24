@@ -6,3 +6,6 @@ pod 'SDWebImage', '~>3.7'
 
 # MJRefresh 下拉刷新
 pod 'MJRefresh'
+
+platform :ios, '7.0'
+pod "AFNetworking", "~> 2.0"

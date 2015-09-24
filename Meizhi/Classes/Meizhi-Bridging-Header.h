@@ -6,3 +6,5 @@
 
 // 下拉刷新
 #import <MJRefresh/MJRefresh.h>
+
+#import <AFNetworking/AFNetworking.h>
