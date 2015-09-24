@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jBa-9C-nck">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="irI-wa-Cd5">
+            <objects>
+                <tabBarController id="jBa-9C-nck" customClass="MainViewController" customModule="Meizhi" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xzE-lV-Ter">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MlJ-7M-S4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-343" y="199"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="p1n-Ac-wKp">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="piJ-Ch-NqY" customClass="WebViewController" customModule="Meizhi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K8q-oD-oXl"/>
+                        <viewControllerLayoutGuide type="bottom" id="REx-hV-Mq1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SHD-uz-nwF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mb-WK-0Y7">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="REx-hV-Mq1" firstAttribute="top" secondItem="5mb-WK-0Y7" secondAttribute="bottom" id="0nz-qJ-YLJ"/>
+                            <constraint firstItem="5mb-WK-0Y7" firstAttribute="leading" secondItem="SHD-uz-nwF" secondAttribute="leading" id="BQi-ZE-oDO"/>
+                            <constraint firstItem="5mb-WK-0Y7" firstAttribute="top" secondItem="K8q-oD-oXl" secondAttribute="bottom" id="FMG-Ll-cBL"/>
+                            <constraint firstAttribute="trailing" secondItem="5mb-WK-0Y7" secondAttribute="trailing" id="r4P-bT-BNd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="5mb-WK-0Y7" id="rLd-c5-N2M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cx5-oh-3ff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-343" y="925"/>
+        </scene>
+    </scenes>
+</document>

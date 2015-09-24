@@ -17,7 +17,6 @@
 		E158BD041BB3D6D900EE6785 /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BCEB1BB3D6D900EE6785 /* DayListCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E158BD051BB3D6D900EE6785 /* DayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E158BCEC1BB3D6D900EE6785 /* DayListCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E158BD061BB3D6D900EE6785 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BCEE1BB3D6D900EE6785 /* DataItem.swift */; settings = {ASSET_TAGS = (); }; };
-		E158BD071BB3D6D900EE6785 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BCF01BB3D6D900EE6785 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E158BD081BB3D6D900EE6785 /* RefreshType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BCF41BB3D6D900EE6785 /* RefreshType.swift */; settings = {ASSET_TAGS = (); }; };
 		E158BD091BB3D6D900EE6785 /* TableViewCellAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BCF51BB3D6D900EE6785 /* TableViewCellAdapter.swift */; settings = {ASSET_TAGS = (); }; };
 		E158BD0A1BB3D6D900EE6785 /* TableViewCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BCF61BB3D6D900EE6785 /* TableViewCellHandler.swift */; settings = {ASSET_TAGS = (); }; };
@@ -25,6 +24,12 @@
 		E158BD0C1BB3D6D900EE6785 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E158BCF91BB3D6D900EE6785 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 		E158BD0D1BB3D6D900EE6785 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E158BCFB1BB3D6D900EE6785 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E158BD0E1BB3D6D900EE6785 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E158BCFD1BB3D6D900EE6785 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		E158BD111BB3D8FB00EE6785 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD101BB3D8FB00EE6785 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E158BD131BB3DB5E00EE6785 /* DayListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD121BB3DB5E00EE6785 /* DayListTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E158BD171BB3DBFD00EE6785 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD161BB3DBFD00EE6785 /* CustomNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		E158BD1B1BB3DF2000EE6785 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD1A1BB3DF2000EE6785 /* DiscoverViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E158BD1D1BB3DF2D00EE6785 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD1C1BB3DF2D00EE6785 /* PhotoViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E158BD201BB3DF5200EE6785 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +58,6 @@
 		E158BCEB1BB3D6D900EE6785 /* DayListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		E158BCEC1BB3D6D900EE6785 /* DayListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayListCell.xib; sourceTree = "<group>"; };
 		E158BCEE1BB3D6D900EE6785 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
-		E158BCF01BB3D6D900EE6785 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E158BCF11BB3D6D900EE6785 /* Meizhi-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Meizhi-Bridging-Header.h"; sourceTree = "<group>"; };
 		E158BCF41BB3D6D900EE6785 /* RefreshType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshType.swift; sourceTree = "<group>"; };
 		E158BCF51BB3D6D900EE6785 /* TableViewCellAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellAdapter.swift; sourceTree = "<group>"; };
@@ -63,6 +67,12 @@
 		E158BCFC1BB3D6D900EE6785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E158BCFD1BB3D6D900EE6785 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E158BCFE1BB3D6D900EE6785 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E158BD101BB3D8FB00EE6785 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E158BD121BB3DB5E00EE6785 /* DayListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayListTableViewController.swift; sourceTree = "<group>"; };
+		E158BD161BB3DBFD00EE6785 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		E158BD1A1BB3DF2000EE6785 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		E158BD1C1BB3DF2D00EE6785 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +171,9 @@
 		E158BCE31BB3D6D900EE6785 /* business */ = {
 			isa = PBXGroup;
 			children = (
+				E158BD1E1BB3DF4400EE6785 /* me */,
+				E158BD191BB3DF0800EE6785 /* photo */,
+				E158BD181BB3DEFD00EE6785 /* discover */,
 				E158BCE41BB3D6D900EE6785 /* category */,
 				E158BCE81BB3D6D900EE6785 /* constant */,
 				E158BCEA1BB3D6D900EE6785 /* day */,
@@ -193,6 +206,7 @@
 			children = (
 				E158BCEB1BB3D6D900EE6785 /* DayListCell.swift */,
 				E158BCEC1BB3D6D900EE6785 /* DayListCell.xib */,
+				E158BD121BB3DB5E00EE6785 /* DayListTableViewController.swift */,
 			);
 			path = day;
 			sourceTree = "<group>";
@@ -208,7 +222,7 @@
 		E158BCEF1BB3D6D900EE6785 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				E158BCF01BB3D6D900EE6785 /* MainViewController.swift */,
+				E158BD101BB3D8FB00EE6785 /* MainViewController.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -228,6 +242,7 @@
 				E158BCF51BB3D6D900EE6785 /* TableViewCellAdapter.swift */,
 				E158BCF61BB3D6D900EE6785 /* TableViewCellHandler.swift */,
 				E158BCF71BB3D6D900EE6785 /* WebViewController.swift */,
+				E158BD161BB3DBFD00EE6785 /* CustomNavigationController.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -241,6 +256,30 @@
 				E158BCFE1BB3D6D900EE6785 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E158BD181BB3DEFD00EE6785 /* discover */ = {
+			isa = PBXGroup;
+			children = (
+				E158BD1A1BB3DF2000EE6785 /* DiscoverViewController.swift */,
+			);
+			path = discover;
+			sourceTree = "<group>";
+		};
+		E158BD191BB3DF0800EE6785 /* photo */ = {
+			isa = PBXGroup;
+			children = (
+				E158BD1C1BB3DF2D00EE6785 /* PhotoViewController.swift */,
+			);
+			path = photo;
+			sourceTree = "<group>";
+		};
+		E158BD1E1BB3DF4400EE6785 /* me */ = {
+			isa = PBXGroup;
+			children = (
+				E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */,
+			);
+			path = me;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,17 +420,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E158BD071BB3D6D900EE6785 /* MainViewController.swift in Sources */,
 				E158BD0B1BB3D6D900EE6785 /* WebViewController.swift in Sources */,
+				E158BD111BB3D8FB00EE6785 /* MainViewController.swift in Sources */,
+				E158BD201BB3DF5200EE6785 /* MeViewController.swift in Sources */,
 				E158BCFF1BB3D6D900EE6785 /* AppDelegate.swift in Sources */,
 				E158BD0A1BB3D6D900EE6785 /* TableViewCellHandler.swift in Sources */,
 				E158BD001BB3D6D900EE6785 /* CategoryCell.swift in Sources */,
 				E158BD041BB3D6D900EE6785 /* DayListCell.swift in Sources */,
 				E158BD091BB3D6D900EE6785 /* TableViewCellAdapter.swift in Sources */,
 				E158BD021BB3D6D900EE6785 /* CategoryInfo.swift in Sources */,
+				E158BD131BB3DB5E00EE6785 /* DayListTableViewController.swift in Sources */,
+				E158BD1B1BB3DF2000EE6785 /* DiscoverViewController.swift in Sources */,
 				E158BD081BB3D6D900EE6785 /* RefreshType.swift in Sources */,
 				E158BD061BB3D6D900EE6785 /* DataItem.swift in Sources */,
 				E158BD031BB3D6D900EE6785 /* Constant.swift in Sources */,
+				E158BD171BB3DBFD00EE6785 /* CustomNavigationController.swift in Sources */,
+				E158BD1D1BB3DF2D00EE6785 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
