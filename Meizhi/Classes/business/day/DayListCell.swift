@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DayListCell: UITableViewCell,TableViewCellAdapter{
+class DayListCell: UITableViewCell{
     typealias Model = DataItem
 
     @IBOutlet weak var iv_image: UIImageView!
@@ -27,6 +27,9 @@ class DayListCell: UITableViewCell,TableViewCellAdapter{
 
         // Configure the view for the selected state
     }
+}
+
+extension DayListCell : TableViewCellAdapter{
     
     func bindData(model:DataItem?, indexPath: NSIndexPath){
         // fill data.
@@ -39,3 +42,5 @@ class DayListCell: UITableViewCell,TableViewCellAdapter{
         }
     }
 }
+
+

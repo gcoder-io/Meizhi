@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryCell: UITableViewCell,TableViewCellAdapter {
+class CategoryCell: UITableViewCell {
     
     typealias Model = DataItem
 
@@ -25,6 +25,9 @@ class CategoryCell: UITableViewCell,TableViewCellAdapter {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+}
+
+extension CategoryCell : TableViewCellAdapter{
     
     func bindData(model:DataItem?, indexPath: NSIndexPath){
         // fill data.
@@ -36,5 +39,4 @@ class CategoryCell: UITableViewCell,TableViewCellAdapter {
             layoutIfNeeded()
         }
     }
-
 }
