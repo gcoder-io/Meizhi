@@ -9,27 +9,62 @@
 import UIKit
 
 class DiscoverViewController: UIViewController {
-
+    private var backgroundScrollView:UIScrollView!
+    private var contentView:UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let navigationHeight = navigationController?.navigationBar.frame.height
+        print("DiscoverViewController=====>\(navigationHeight)")
+        
+        title = "发现"
+        setScrollView()
+        initChildViewController()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func setScrollView() {
+        self.automaticallyAdjustsScrollViewInsets = false
+        backgroundScrollView = UIScrollView()
+        backgroundScrollView.backgroundColor = Constant.BACKGROUND_COLOR
+        backgroundScrollView.contentSize = CGSizeMake(Constant.AppWidth, 0)
+        backgroundScrollView.showsHorizontalScrollIndicator = false
+        backgroundScrollView.showsVerticalScrollIndicator = false
+        backgroundScrollView.pagingEnabled = true
+        backgroundScrollView.delegate = self
+        backgroundScrollView.backgroundColor = UIColor.blackColor()
+        view.addSubview(backgroundScrollView)
+        
+        backgroundScrollView.mas_makeConstraints { (make) -> Void in
+            make.width.equalTo()(self.view)
+            make.top.equalTo()(self.view).offset()(Constant.NavigationH)
+            make.bottom.equalTo()(self.view).offset()(-Constant.tabBarHeight!)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func initChildViewController(){
+        let categoryVC = CategoryTableViewController()
+        categoryVC.setCategoryInfo(CategoryInfo(title: "iOS", url: Constant.URL_IOS))
+        let contentInset = UIEdgeInsetsMake(0, 0, Constant.tabBarHeight! , 0)
+        categoryVC.setUIEdgeInsets(contentInset)
+        backgroundScrollView.addSubview(categoryVC.view)
+        
+        categoryVC.view.mas_makeConstraints { (make) -> Void in
+            make.width.equalTo()(self.backgroundScrollView)
+            make.height.equalTo()(self.backgroundScrollView).priorityLow()
+            make.top.equalTo()(self.backgroundScrollView)
+            make.bottom.equalTo()(self.backgroundScrollView).offset()(1.0)
+        }
     }
-    */
-
 }
+
+/// MARK: - UIScrollViewDelegate
+extension DiscoverViewController: UIScrollViewDelegate {
+    
+    // 监听scrollView的滚动事件
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        if scrollView === backgroundScrollView {
+            print("scrollViewDidEndDecelerating=====>")
+        }
+    }
+}
+

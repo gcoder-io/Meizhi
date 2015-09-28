@@ -30,6 +30,8 @@
 		E158BD1B1BB3DF2000EE6785 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD1A1BB3DF2000EE6785 /* DiscoverViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E158BD1D1BB3DF2D00EE6785 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD1C1BB3DF2D00EE6785 /* PhotoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E158BD201BB3DF5200EE6785 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E158BD221BB41FDA00EE6785 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD211BB41FDA00EE6785 /* CategoryTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E1AFED391BB51D17000E2488 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFED381BB51D17000E2488 /* TestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		E158BD1A1BB3DF2000EE6785 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		E158BD1C1BB3DF2D00EE6785 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		E158BD211BB41FDA00EE6785 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		E1AFED381BB51D17000E2488 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,7 @@
 				E158BCE51BB3D6D900EE6785 /* CategoryCell.swift */,
 				E158BCE61BB3D6D900EE6785 /* CategoryCell.xib */,
 				E158BCE71BB3D6D900EE6785 /* CategoryInfo.swift */,
+				E158BD211BB41FDA00EE6785 /* CategoryTableViewController.swift */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				E158BD101BB3D8FB00EE6785 /* MainViewController.swift */,
+				E1AFED381BB51D17000E2488 /* TestTableViewController.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -420,10 +426,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E158BD221BB41FDA00EE6785 /* CategoryTableViewController.swift in Sources */,
 				E158BD0B1BB3D6D900EE6785 /* WebViewController.swift in Sources */,
 				E158BD111BB3D8FB00EE6785 /* MainViewController.swift in Sources */,
 				E158BD201BB3DF5200EE6785 /* MeViewController.swift in Sources */,
 				E158BCFF1BB3D6D900EE6785 /* AppDelegate.swift in Sources */,
+				E1AFED391BB51D17000E2488 /* TestTableViewController.swift in Sources */,
 				E158BD0A1BB3D6D900EE6785 /* TableViewCellHandler.swift in Sources */,
 				E158BD001BB3D6D900EE6785 /* CategoryCell.swift in Sources */,
 				E158BD041BB3D6D900EE6785 /* DayListCell.swift in Sources */,

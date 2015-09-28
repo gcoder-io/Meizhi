@@ -8,3 +8,7 @@
 #import <MJRefresh/MJRefresh.h>
 
 #import <AFNetworking/AFNetworking.h>
+
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+#import "Masonry.h"

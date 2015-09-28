@@ -21,5 +21,11 @@ public class Constant{
     public static let BACKGROUND_COLOR: UIColor = UIColor.whiteColor()
     
     public static var tabBarHeight:CGFloat?
+    //public static var topLayoutGuideHeight:CGFloat?
+    
+    public static let NavigationH: CGFloat = 64
 
+    public static let AppWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
+    public static let AppHeight: CGFloat = UIScreen.mainScreen().bounds.size.height
+    public static let MainBounds: CGRect = UIScreen.mainScreen().bounds
 }

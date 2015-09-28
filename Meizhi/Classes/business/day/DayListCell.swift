@@ -37,7 +37,6 @@ extension DayListCell : TableViewCellAdapter{
             lb_who.text = model!.who
             lb_date.text = model!.desc
             iv_image.sd_setImageWithURL(NSURL(string: model!.url), placeholderImage: UIImage(named: "avatar"))
-            
             layoutIfNeeded()
         }
     }
