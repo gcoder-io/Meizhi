@@ -150,8 +150,8 @@ extension CategoryTableViewController{
             weakSelf?.loadData()
         })
         let footer:MJRefreshAutoNormalFooter = MJRefreshAutoNormalFooter(refreshingBlock: { () -> Void in
-            weakSelf?.refreshType = RefreshType.LOAD_MORE
-            weakSelf?.loadData()
+//            weakSelf?.refreshType = RefreshType.LOAD_MORE
+//            weakSelf?.loadData()
         })
         footer.automaticallyRefresh = true
         tableView.footer = footer
