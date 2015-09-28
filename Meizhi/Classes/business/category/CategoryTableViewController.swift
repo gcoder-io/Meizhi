@@ -17,6 +17,11 @@ class CategoryTableViewController: UITableViewController {
     private var refreshType:RefreshType = RefreshType.PULL_DOWN
     private var isInitialized = false
     private var contentInset:UIEdgeInsets?
+    private weak var parentController:UINavigationController?
+    
+    func setParentController(parentController:UINavigationController?){
+        self.parentController = parentController
+    }
     
     func setUIEdgeInsets(contentInset:UIEdgeInsets?){
         self.contentInset = contentInset
@@ -98,6 +103,15 @@ class CategoryTableViewController: UITableViewController {
 //        cell.preservesSuperviewLayoutMargins = false
 //        cell.layoutMargins = UIEdgeInsetsZero
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // 跳转详情
+        let data = list?[indexPath.row]
+        let webVC = WebViewController()
+        
+        webVC.setUrl(data?.url)
+        parentController?.pushViewController(webVC, animated: false)
+    }
 }
 
 // MARK: - TableViewCell处理器
@@ -140,7 +154,7 @@ extension CategoryTableViewController:TableViewCellHandler{
 extension CategoryTableViewController{
     
     private func initMJRefresh(){
-         var weakSelf:CategoryTableViewController? = self
+        var weakSelf:CategoryTableViewController? = self
 
         tableView.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
             print("refreshingBlock============================================\(weakSelf)")

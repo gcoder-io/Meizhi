@@ -10,7 +10,6 @@ import UIKit
 
 // 公共WebViewController
 class WebViewController: UIViewController {
-    @IBOutlet weak var webView: UIWebView!
     private var url:String?
     
     func setUrl(url:String?){
@@ -20,6 +19,13 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("WebViewController===\(url)")
+        
+        let webView = UIWebView()
+        view.addSubview(webView)
+        webView.mas_makeConstraints { (make) -> Void in
+            make.width.equalTo()(self.view)
+            make.height.equalTo()(self.view)
+        }
         
         if url != nil{
             webView.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))
