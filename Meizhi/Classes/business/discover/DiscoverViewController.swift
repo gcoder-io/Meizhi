@@ -35,8 +35,9 @@ class DiscoverViewController: UIViewController {
     
     private func setScrollView() {
         self.automaticallyAdjustsScrollViewInsets = false
-//        backgroundScrollView = UIScrollView()
-        backgroundScrollView = UIScrollView(frame: CGRectMake(0, 0, Constant.APP_WIDTH, Constant.APP_HEIGHT - Constant.NavigationH - 49))
+        backgroundScrollView = UIScrollView()
+        // frame方式
+//        backgroundScrollView = UIScrollView(frame: CGRectMake(0, 0, Constant.APP_WIDTH, Constant.APP_HEIGHT - Constant.NavigationH - 49))
         backgroundScrollView.contentSize = CGSizeMake(Constant.APP_WIDTH * 2.0, 0)
         backgroundScrollView.showsHorizontalScrollIndicator = false
         backgroundScrollView.showsVerticalScrollIndicator = false
@@ -45,6 +46,7 @@ class DiscoverViewController: UIViewController {
         backgroundScrollView.backgroundColor = UIColor.blackColor()
         view.addSubview(backgroundScrollView)
         
+        // autolayout方式
         backgroundScrollView.mas_makeConstraints { (make) -> Void in
             make.width.equalTo()(self.view)
             make.top.equalTo()(self.view).offset()(Constant.NavigationH)
