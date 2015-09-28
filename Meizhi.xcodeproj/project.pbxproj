@@ -32,6 +32,7 @@
 		E158BD201BB3DF5200EE6785 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E158BD221BB41FDA00EE6785 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD211BB41FDA00EE6785 /* CategoryTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E1AFED391BB51D17000E2488 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFED381BB51D17000E2488 /* TestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E1AFED3B1BB93F38000E2488 /* DoubleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFED3A1BB93F38000E2488 /* DoubleTextView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		E158BD211BB41FDA00EE6785 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		E1AFED381BB51D17000E2488 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		E1AFED3A1BB93F38000E2488 /* DoubleTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 		E158BD181BB3DEFD00EE6785 /* discover */ = {
 			isa = PBXGroup;
 			children = (
+				E1AFED3A1BB93F38000E2488 /* DoubleTextView.swift */,
 				E158BD1A1BB3DF2000EE6785 /* DiscoverViewController.swift */,
 			);
 			path = discover;
@@ -426,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AFED3B1BB93F38000E2488 /* DoubleTextView.swift in Sources */,
 				E158BD221BB41FDA00EE6785 /* CategoryTableViewController.swift in Sources */,
 				E158BD0B1BB3D6D900EE6785 /* WebViewController.swift in Sources */,
 				E158BD111BB3D8FB00EE6785 /* MainViewController.swift in Sources */,

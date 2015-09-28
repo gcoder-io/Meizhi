@@ -28,8 +28,8 @@ class DayListTableViewController: UITableViewController {
         print("DayListTableViewController=====>\(title)")
         
         estimatedCell = instanceEstimatedCell()
-        initTableView()
-        initMJRefresh()
+//        initTableView()
+//        initMJRefresh()
     }
 
     private func initTableView(){

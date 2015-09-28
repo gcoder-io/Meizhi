@@ -21,7 +21,7 @@ class MainViewController: UITabBarController {
     private func initChildViewControllers(){
         // 每日一弹
         let dayListVC = DayListTableViewController()
-        let contentInset = UIEdgeInsetsMake(0, 0, Constant.tabBarHeight ?? 0 , 0)
+        let contentInset = UIEdgeInsetsMake(0, 0, Constant.FOOTER_HEIGHT, 0)
         dayListVC.setUIEdgeInsets(contentInset)
         setChildViewController(dayListVC,title: "每日一弹",
             image: "recommendation_1",selectedImage: "recommendation_2")

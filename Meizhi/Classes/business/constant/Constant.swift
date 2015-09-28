@@ -24,8 +24,12 @@ public class Constant{
     //public static var topLayoutGuideHeight:CGFloat?
     
     public static let NavigationH: CGFloat = 64
+    public static let FOOTER_HEIGHT: CGFloat = 44
 
-    public static let AppWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
-    public static let AppHeight: CGFloat = UIScreen.mainScreen().bounds.size.height
-    public static let MainBounds: CGRect = UIScreen.mainScreen().bounds
+
+    public static let APP_WIDTH: CGFloat = UIScreen.mainScreen().bounds.size.width
+    public static let APP_HEIGHT: CGFloat = UIScreen.mainScreen().bounds.size.height
+    public static let MAIN_BOUNDS: CGRect = UIScreen.mainScreen().bounds
+    
+    public static let NAV_TITLE_FONT: UIFont = UIFont.systemFontOfSize(18)
 }
