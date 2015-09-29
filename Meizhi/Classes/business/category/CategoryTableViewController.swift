@@ -17,10 +17,10 @@ class CategoryTableViewController: UITableViewController {
     private var refreshType:RefreshType = RefreshType.PULL_DOWN
     private var isInitialized = false
     private var contentInset:UIEdgeInsets?
-    private weak var parentController:UINavigationController?
-    
-    func setParentController(parentController:UINavigationController?){
-        self.parentController = parentController
+    private var jumpDelegate:ViewControllerJumpDelegate?
+
+    func setViewControllerJumpDelegate(jumpDelegate:ViewControllerJumpDelegate?){
+        self.jumpDelegate = jumpDelegate
     }
     
     func setUIEdgeInsets(contentInset:UIEdgeInsets?){
@@ -110,7 +110,7 @@ class CategoryTableViewController: UITableViewController {
         let webVC = WebViewController()
         
         webVC.setUrl(data?.url)
-        parentController?.pushViewController(webVC, animated: false)
+        jumpDelegate?.jump(webVC)
     }
 }
 

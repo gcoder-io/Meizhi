@@ -65,7 +65,7 @@ class DiscoverViewController: UIViewController {
         categoryVC.setCategoryInfo(categoryInfo)
         let contentInset = UIEdgeInsetsMake(0, 0, Constant.FOOTER_HEIGHT , 0)
         categoryVC.setUIEdgeInsets(contentInset)
-        categoryVC.setParentController(navigationController)
+        categoryVC.setViewControllerJumpDelegate(self)
         
         // frame方式
         let frame = CGRectMake(Constant.APP_WIDTH * index , 0, Constant.APP_WIDTH, backgroundScrollView.frame.height)
@@ -82,6 +82,13 @@ class DiscoverViewController: UIViewController {
 //            make.bottom.equalTo()(self.backgroundScrollView).offset()(1.0)
 //        }
 
+    }
+}
+
+extension DiscoverViewController : ViewControllerJumpDelegate{
+    
+    func jump(vc:UIViewController){
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

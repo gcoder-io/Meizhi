@@ -33,6 +33,7 @@
 		E158BD221BB41FDA00EE6785 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BD211BB41FDA00EE6785 /* CategoryTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E1AFED391BB51D17000E2488 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFED381BB51D17000E2488 /* TestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E1AFED3B1BB93F38000E2488 /* DoubleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFED3A1BB93F38000E2488 /* DoubleTextView.swift */; settings = {ASSET_TAGS = (); }; };
+		E1AFED3D1BB95310000E2488 /* ViewControllerJumpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFED3C1BB95310000E2488 /* ViewControllerJumpDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E158BD211BB41FDA00EE6785 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		E1AFED381BB51D17000E2488 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		E1AFED3A1BB93F38000E2488 /* DoubleTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTextView.swift; sourceTree = "<group>"; };
+		E1AFED3C1BB95310000E2488 /* ViewControllerJumpDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerJumpDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 				E158BCF61BB3D6D900EE6785 /* TableViewCellHandler.swift */,
 				E158BCF71BB3D6D900EE6785 /* WebViewController.swift */,
 				E158BD161BB3DBFD00EE6785 /* CustomNavigationController.swift */,
+				E1AFED3C1BB95310000E2488 /* ViewControllerJumpDelegate.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				E158BD0A1BB3D6D900EE6785 /* TableViewCellHandler.swift in Sources */,
 				E158BD001BB3D6D900EE6785 /* CategoryCell.swift in Sources */,
 				E158BD041BB3D6D900EE6785 /* DayListCell.swift in Sources */,
+				E1AFED3D1BB95310000E2488 /* ViewControllerJumpDelegate.swift in Sources */,
 				E158BD091BB3D6D900EE6785 /* TableViewCellAdapter.swift in Sources */,
 				E158BD021BB3D6D900EE6785 /* CategoryInfo.swift in Sources */,
 				E158BD131BB3DB5E00EE6785 /* DayListTableViewController.swift in Sources */,
