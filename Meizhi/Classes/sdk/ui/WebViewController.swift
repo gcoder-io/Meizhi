@@ -23,9 +23,10 @@ class WebViewController: UIViewController {
         let webView = UIWebView()
         view.addSubview(webView)
         webView.mas_makeConstraints { (make) -> Void in
-            make.width.equalTo()(self.view)
-            make.height.equalTo()(self.view)
+            make.edges.equalTo()(self.view)
         }
+
+        webView.layoutIfNeeded()
         
         if url != nil{
             webView.loadRequest(NSURLRequest(URL: NSURL(string: url!)!))

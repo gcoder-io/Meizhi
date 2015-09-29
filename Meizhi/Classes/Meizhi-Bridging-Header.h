@@ -5,9 +5,14 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 // 下拉刷新
-#import <MJRefresh/MJRefresh.h>
+//#import <MJRefresh/MJRefresh.h>
+// ios 7.0需要使用以下导入方式
+#import "MJRefresh.h"
 
-#import <AFNetworking/AFNetworking.h>
+//#import <AFNetworking/AFNetworking.h>
+// ios 7.0需要使用以下导入方式
+#import "AFNetworking.h"
+
 
 #define MAS_SHORTHAND
 #define MAS_SHORTHAND_GLOBALS

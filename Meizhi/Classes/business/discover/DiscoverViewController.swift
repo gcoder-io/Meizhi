@@ -61,7 +61,8 @@ class DiscoverViewController: UIViewController {
         
         // autolayout方式
         backgroundScrollView.mas_makeConstraints { (make) -> Void in
-            make.width.equalTo()(self.view)
+            make.left.equalTo()(self.view)
+            make.right.equalTo()(self.view)
             make.top.equalTo()(self.view).offset()(Constant.NavigationH)
             make.bottom.equalTo()(self.view).offset()(-Constant.tabBarHeight!)
         }

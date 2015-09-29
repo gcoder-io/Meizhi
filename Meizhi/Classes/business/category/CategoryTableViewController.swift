@@ -65,9 +65,6 @@ class CategoryTableViewController: UITableViewController {
     }
     
     private func initTableView(){
-        // 去除cell分割线
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -110,9 +107,15 @@ class CategoryTableViewController: UITableViewController {
     
     // 处理cell line左边界不全问题
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        cell.separatorInset = UIEdgeInsetsZero
-//        cell.preservesSuperviewLayoutMargins = false
-//        cell.layoutMargins = UIEdgeInsetsZero
+        // ios7.0+处理方式
+        cell.separatorInset = UIEdgeInsetsZero
+        // ios8.0+需附加配置
+        if #available(iOS 8.0, *) {
+            cell.preservesSuperviewLayoutMargins = false
+            cell.layoutMargins = UIEdgeInsetsZero
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
