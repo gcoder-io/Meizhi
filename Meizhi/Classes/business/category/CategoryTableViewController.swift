@@ -75,6 +75,9 @@ class CategoryTableViewController: UITableViewController {
             tableView.contentInset = UIEdgeInsetsMake(0, 0, Constant.FOOTER_HEIGHT, 0)
         }
         
+        // 隐藏多余的分割线
+        tableView.tableFooterView = UIView()
+        
         // 注册xib
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "CategoryCell")
