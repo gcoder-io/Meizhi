@@ -18,6 +18,8 @@ class CategoryTableViewController: UITableViewController {
     private var isInitialized = false
     private var contentInset:UIEdgeInsets?
     private weak var jumpDelegate:ViewControllerJumpDelegate?
+    private var mySelf:CategoryTableViewController!
+    private var initialize:Bool = false
 
     func setViewControllerJumpDelegate(jumpDelegate:ViewControllerJumpDelegate?){
         self.jumpDelegate = jumpDelegate
@@ -35,8 +37,15 @@ class CategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         title = categoryInfo?.title
+        mySelf = self
         print("CategoryTableViewController=====>\(title)")
-
+    }
+    
+    func initViews(){
+        if initialize{
+            return
+        }
+        initialize = true
         estimatedCell = instanceEstimatedCell()
         initTableView()
         initMJRefresh()
@@ -157,11 +166,9 @@ extension CategoryTableViewController:TableViewCellHandler{
 extension CategoryTableViewController{
     
     private func initMJRefresh(){
-        var weakSelf:CategoryTableViewController? = self
+        weak var weakSelf:CategoryTableViewController? = mySelf
 
         tableView.header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
-            print("refreshingBlock============================================\(weakSelf)")
-
             weakSelf?.refreshType = RefreshType.PULL_DOWN
             weakSelf?.page = 1
             weakSelf?.loadData()
@@ -170,7 +177,6 @@ extension CategoryTableViewController{
             weakSelf?.refreshType = RefreshType.LOAD_MORE
             weakSelf?.loadData()
         })
-        print("footer.frame===>\(footer.frame)")
         footer.automaticallyRefresh = true
         tableView.footer = footer
         

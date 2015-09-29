@@ -13,6 +13,7 @@ class DiscoverViewController: UIViewController {
     private var contentView:UIView!
     private var doubleTextView:DoubleTextView!
     private var index:CGFloat = 0
+    private var lastIndex = 0
     private let categoryInfoArr = [
         CategoryInfo(title: "iOS", url: Constant.URL_IOS),
         CategoryInfo(title: "Android", url: Constant.URL_ANDROID),
@@ -20,6 +21,7 @@ class DiscoverViewController: UIViewController {
         CategoryInfo(title: "阅读", url: Constant.URL_READ),
         CategoryInfo(title: "一刻", url: Constant.URL_RESET)
     ]
+    private var vcArr = [CategoryTableViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +57,6 @@ class DiscoverViewController: UIViewController {
         backgroundScrollView.showsVerticalScrollIndicator = false
         backgroundScrollView.pagingEnabled = true
         backgroundScrollView.delegate = self
-        backgroundScrollView.backgroundColor = UIColor.blackColor()
         view.addSubview(backgroundScrollView)
         
         // autolayout方式
@@ -75,16 +76,22 @@ class DiscoverViewController: UIViewController {
     
     private func fillChildViewController(categoryInfo:CategoryInfo){
         let categoryVC = CategoryTableViewController()
+        vcArr.append(categoryVC)
         categoryVC.setCategoryInfo(categoryInfo)
         categoryVC.setViewControllerJumpDelegate(self)
         
         // frame方式
         let frame = CGRectMake(Constant.APP_WIDTH * index , 0, Constant.APP_WIDTH, backgroundScrollView.frame.height)
         categoryVC.view.frame = frame
-        index += 1
-            
         backgroundScrollView.addSubview(categoryVC.view)
         
+        if index < 2{
+            // 默认初始化前2个vc tableview数据，其它vc懒加载
+            categoryInfo.isAdd = true
+            categoryVC.initViews()
+        }
+        index += 1
+
         // autolayout方式
 //        categoryVC.view.mas_makeConstraints { (make) -> Void in
 //            make.width.equalTo()(self.backgroundScrollView)
@@ -106,8 +113,26 @@ extension DiscoverViewController : ViewControllerJumpDelegate{
 // MARK: - DoubleTextViewDelegate
 extension DiscoverViewController : DoubleTextViewDelegate{
     
+    func switchViewController(index: Int){
+        if index > 0 && index < categoryInfoArr.count{
+            let info = categoryInfoArr[index]
+            if !info.isAdd{
+                info.isAdd = true
+                if index < vcArr.count{
+                    vcArr[index].initViews()
+                }
+            }
+        }
+    }
+    
     func doubleTextView(doubleTextView: DoubleTextView, didClickBtn btn: UIButton, forIndex index: Int){
+        // 初始化当前index及前后tableview数据
+        switchViewController(index)
+        switchViewController(index - 1)
+        switchViewController(index + 1)
+
         backgroundScrollView.setContentOffset(CGPointMake(Constant.APP_WIDTH * CGFloat(index), 0), animated: true)
+        lastIndex = index
     }
 }
 

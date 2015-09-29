@@ -11,6 +11,7 @@ import Foundation
 public class CategoryInfo{
     public var title:String
     public var url:String
+    public var isAdd:Bool = false
     
     init(title:String, url:String){
         self.title = title
