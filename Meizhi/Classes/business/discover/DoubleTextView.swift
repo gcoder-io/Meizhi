@@ -11,25 +11,29 @@ import UIKit
 
 class DoubleTextView: UIView {
     
-    private let leftTextButton: NoHighlightButton =  NoHighlightButton()
-    private let rightTextButton: NoHighlightButton = NoHighlightButton()
+    private var buttonArr = [NoHighlightButton]()
     private let textColorFroNormal: UIColor = UIColor(red: 100 / 255.0, green: 100 / 255.0, blue: 100 / 255.0, alpha: 1)
-    private let textFont: UIFont = Constant.NAV_TITLE_FONT
+    private let textFont: UIFont = Constant.TITLE_FONT
     private let bottomLineView: UIView = UIView()
     private var selectedBtn: UIButton?
     weak var delegate: DoubleTextViewDelegate?
 
-    /// 便利构造方法
-    convenience init(leftText: String, rigthText: String) {
+    convenience init(textArr:[String]){
         self.init()
-        // 设置左边文字
-        setButton(leftTextButton, title: leftText, tag: 100)
-        // 设置右边文字
-        setButton(rightTextButton, title: rigthText, tag: 101)
+        if textArr.count > 0{
+            var i:Int = 0
+            for str in textArr{
+                let btn = NoHighlightButton()
+                buttonArr.append(btn)
+                setButton(btn, title: str, tag: 100 + i)
+                i += 1
+            }
+        }
         // 设置底部线条View
         setBottomLineView()
-        
-        titleButtonClick(leftTextButton)
+        if buttonArr.count > 0{
+            titleButtonClick(buttonArr[0])
+        }
     }
     
     private func setBottomLineView() {
@@ -49,11 +53,16 @@ class DoubleTextView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let height = self.frame.size.height
-        let btnW = self.frame.size.width * 0.5
-        leftTextButton.frame = CGRectMake(0, 0, btnW, height)
-        rightTextButton.frame = CGRectMake(btnW, 0, btnW, height)
-        bottomLineView.frame = CGRectMake(0, height - 2, btnW, 2)
+        if buttonArr.count > 0{
+            let height = self.frame.size.height
+            let btnW = self.frame.size.width / CGFloat(buttonArr.count)
+            var i:CGFloat = 0
+            for btn in buttonArr{
+                btn.frame = CGRectMake(btnW * i, 0, btnW, height)
+                i += 1
+            }
+            bottomLineView.frame = CGRectMake(0, height - 2, btnW, 2)
+        }
     }
     
     func titleButtonClick(sender: UIButton) {

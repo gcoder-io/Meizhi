@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ViewControllerJumpDelegate{
+public protocol ViewControllerJumpDelegate : NSObjectProtocol{
     
     func jump(vc:UIViewController)
 }

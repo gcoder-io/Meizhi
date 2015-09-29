@@ -17,7 +17,7 @@ class CategoryTableViewController: UITableViewController {
     private var refreshType:RefreshType = RefreshType.PULL_DOWN
     private var isInitialized = false
     private var contentInset:UIEdgeInsets?
-    private var jumpDelegate:ViewControllerJumpDelegate?
+    private weak var jumpDelegate:ViewControllerJumpDelegate?
 
     func setViewControllerJumpDelegate(jumpDelegate:ViewControllerJumpDelegate?){
         self.jumpDelegate = jumpDelegate
@@ -64,9 +64,11 @@ class CategoryTableViewController: UITableViewController {
         
         // 设置tableView显示区域
         if contentInset != nil{
-            print(contentInset)
             tableView.contentInset = contentInset!
+        }else{
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, Constant.FOOTER_HEIGHT, 0)
         }
+        
         // 注册xib
         let nib = UINib(nibName: "CategoryCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "CategoryCell")
@@ -109,6 +111,7 @@ class CategoryTableViewController: UITableViewController {
         let data = list?[indexPath.row]
         let webVC = WebViewController()
         
+        webVC.title = "详情"
         webVC.setUrl(data?.url)
         jumpDelegate?.jump(webVC)
     }

@@ -32,4 +32,5 @@ public class Constant{
     public static let MAIN_BOUNDS: CGRect = UIScreen.mainScreen().bounds
     
     public static let NAV_TITLE_FONT: UIFont = UIFont.systemFontOfSize(18)
+    public static let TITLE_FONT: UIFont = UIFont.systemFontOfSize(16)
 }

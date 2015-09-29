@@ -28,20 +28,22 @@ class DayListTableViewController: UITableViewController {
         print("DayListTableViewController=====>\(title)")
         
         estimatedCell = instanceEstimatedCell()
-//        initTableView()
-//        initMJRefresh()
+        initTableView()
+        initMJRefresh()
     }
 
     private func initTableView(){
         // 去除cell分割线
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
+
         tableView.dataSource = self
         tableView.delegate = self
         
         // 设置tableView显示区域
         if contentInset != nil{
             tableView.contentInset = contentInset!
+        }else{
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, Constant.FOOTER_HEIGHT, 0)
         }
         
         // 注册xib

@@ -13,6 +13,13 @@ class DiscoverViewController: UIViewController {
     private var contentView:UIView!
     private var doubleTextView:DoubleTextView!
     private var index:CGFloat = 0
+    private let categoryInfoArr = [
+        CategoryInfo(title: "iOS", url: Constant.URL_IOS),
+        CategoryInfo(title: "Android", url: Constant.URL_ANDROID),
+        CategoryInfo(title: "前端", url: Constant.URL_WEB),
+        CategoryInfo(title: "阅读", url: Constant.URL_READ),
+        CategoryInfo(title: "一刻", url: Constant.URL_RESET)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +34,12 @@ class DiscoverViewController: UIViewController {
 
     private func setNav() {
         navigationItem.rightBarButtonItem = UIBarButtonItem()
-        doubleTextView = DoubleTextView(leftText: "iOS", rigthText: "Android");
-        doubleTextView.frame = CGRectMake(0, 0, 120, 44)
+        var titleArr = [String]()
+        for info in categoryInfoArr{
+            titleArr.append(info.title)
+        }
+        doubleTextView = DoubleTextView(textArr: titleArr)
+        doubleTextView.frame = CGRectMake(0, 0, Constant.APP_WIDTH, 44)
         doubleTextView.delegate = self
         navigationItem.titleView = doubleTextView
     }
@@ -38,7 +49,8 @@ class DiscoverViewController: UIViewController {
         backgroundScrollView = UIScrollView()
         // frame方式
 //        backgroundScrollView = UIScrollView(frame: CGRectMake(0, 0, Constant.APP_WIDTH, Constant.APP_HEIGHT - Constant.NavigationH - 49))
-        backgroundScrollView.contentSize = CGSizeMake(Constant.APP_WIDTH * 2.0, 0)
+        
+        backgroundScrollView.contentSize = CGSizeMake(Constant.APP_WIDTH * CGFloat(categoryInfoArr.count), 0)
         backgroundScrollView.showsHorizontalScrollIndicator = false
         backgroundScrollView.showsVerticalScrollIndicator = false
         backgroundScrollView.pagingEnabled = true
@@ -56,15 +68,14 @@ class DiscoverViewController: UIViewController {
     }
     
     private func initChildViewController(){
-        fillChildViewController(CategoryInfo(title: "iOS", url: Constant.URL_IOS))
-        fillChildViewController(CategoryInfo(title: "Android", url: Constant.URL_ANDROID))
+        for info in categoryInfoArr{
+            fillChildViewController(info)
+        }
     }
     
     private func fillChildViewController(categoryInfo:CategoryInfo){
         let categoryVC = CategoryTableViewController()
         categoryVC.setCategoryInfo(categoryInfo)
-        let contentInset = UIEdgeInsetsMake(0, 0, Constant.FOOTER_HEIGHT , 0)
-        categoryVC.setUIEdgeInsets(contentInset)
         categoryVC.setViewControllerJumpDelegate(self)
         
         // frame方式
