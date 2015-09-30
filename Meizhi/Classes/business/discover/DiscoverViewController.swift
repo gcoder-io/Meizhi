@@ -26,40 +26,46 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("DiscoverViewController=====>\(self.topLayoutGuide)")
+        print("DiscoverViewController=====>")
         
         title = "发现"
         
-        setNav()
+        initNavigationItem()
         setScrollView()
         initContentViewForSV()
         initChildViewController()
     }
 
-    private func setNav() {
+    private func initNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem()
         var titleArr = [String]()
         for info in categoryInfoArr{
             titleArr.append(info.title)
         }
         doubleTextView = DoubleTextView(textArr: titleArr)
-        let screenWidth = UIScreen.mainScreen().bounds.size.width
-        doubleTextView.frame = CGRectMake(0, 0, screenWidth, 44)
         doubleTextView.delegate = self
-        navigationItem.titleView = doubleTextView
-
-//        let navigationHeight = navigationController?.navigationBar.frame.height
-//        doubleTextView.mas_makeConstraints { (make) -> Void in
-//            make.edges.equalTo()(self.navigationController?.navigationBar)
-//        }
         
+        let titleView = UIView()
+        let frame = self.navigationController?.navigationBar.frame
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let defaultHeight:CGFloat = 44
+        titleView.frame = CGRectMake(0, 0, frame?.width ?? screenWidth
+            , frame?.height ?? defaultHeight)
+        titleView.addSubview(doubleTextView)
+        
+        doubleTextView.translatesAutoresizingMaskIntoConstraints = false
+        doubleTextView.mas_makeConstraints { (make) -> Void in
+            make.edges.equalTo()(titleView)
+        }
+        
+        navigationItem.titleView = titleView
     }
     
     private func setScrollView() {
         self.automaticallyAdjustsScrollViewInsets = false
         backgroundScrollView = UIScrollView()
         // frame方式
-//        backgroundScrollView = UIScrollView(frame: CGRectMake(0, 0, Constant.APP_WIDTH, Constant.APP_HEIGHT - Constant.NavigationH - 49))
+        //backgroundScrollView = UIScrollView(frame: CGRectMake(0, 0, Constant.APP_WIDTH, Constant.APP_HEIGHT - Constant.NavigationH - 49))
         
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         backgroundScrollView.contentSize = CGSizeMake(screenWidth * CGFloat(categoryInfoArr.count), 0)        
@@ -102,9 +108,9 @@ class DiscoverViewController: UIViewController {
         categoryVC.setViewControllerJumpDelegate(self)
         
         // frame方式
-//        let frame = CGRectMake(Constant.APP_WIDTH * index , 0, Constant.APP_WIDTH, backgroundScrollView.frame.height)
-//        categoryVC.view.frame = frame
-//        backgroundScrollView.addSubview(categoryVC.view)
+        //let frame = CGRectMake(Constant.APP_WIDTH * index , 0, Constant.APP_WIDTH, backgroundScrollView.frame.height)
+        //categoryVC.view.frame = frame
+        //backgroundScrollView.addSubview(categoryVC.view)
         
         // autolayout方式
         contentViewForSV.addSubview(categoryVC.view)
