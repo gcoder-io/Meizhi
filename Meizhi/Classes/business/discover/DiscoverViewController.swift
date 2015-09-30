@@ -26,14 +26,13 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let navigationHeight = navigationController?.navigationBar.frame.height
-        print("DiscoverViewController=====>\(navigationHeight)")
+        print("DiscoverViewController=====>\(self.topLayoutGuide)")
         
         title = "发现"
+        
         setNav()
         setScrollView()
         initContentViewForSV()
-//        fillChildren()
         initChildViewController()
     }
 
@@ -48,9 +47,12 @@ class DiscoverViewController: UIViewController {
         doubleTextView.frame = CGRectMake(0, 0, screenWidth, 44)
         doubleTextView.delegate = self
         navigationItem.titleView = doubleTextView
+
+//        let navigationHeight = navigationController?.navigationBar.frame.height
 //        doubleTextView.mas_makeConstraints { (make) -> Void in
-//            make.edges.equalTo()(self.navigationItem)
+//            make.edges.equalTo()(self.navigationController?.navigationBar)
 //        }
+        
     }
     
     private func setScrollView() {
@@ -60,7 +62,7 @@ class DiscoverViewController: UIViewController {
 //        backgroundScrollView = UIScrollView(frame: CGRectMake(0, 0, Constant.APP_WIDTH, Constant.APP_HEIGHT - Constant.NavigationH - 49))
         
         let screenWidth = UIScreen.mainScreen().bounds.size.width
-        backgroundScrollView.contentSize = CGSizeMake(screenWidth * CGFloat(categoryInfoArr.count), 0)
+        backgroundScrollView.contentSize = CGSizeMake(screenWidth * CGFloat(categoryInfoArr.count), 0)        
         backgroundScrollView.showsHorizontalScrollIndicator = false
         backgroundScrollView.showsVerticalScrollIndicator = false
         backgroundScrollView.pagingEnabled = true
@@ -71,10 +73,11 @@ class DiscoverViewController: UIViewController {
         backgroundScrollView.mas_makeConstraints { (make) -> Void in
             make.left.equalTo()(self.view)
             make.right.equalTo()(self.view)
-            make.top.equalTo()(self.view).offset()(Constant.NavigationH)
-            make.bottom.equalTo()(self.view).offset()(-Constant.tabBarHeight!)
+            //make.top.equalTo()(self.view).offset()(Constant.NavigationH)
+            //make.bottom.equalTo()(self.view).offset()(-Constant.tabBarHeight!)
+            make.top.equalTo()(self.mas_topLayoutGuide)
+            make.bottom.equalTo()(self.mas_bottomLayoutGuide)
         }
-        backgroundScrollView.layoutIfNeeded()
     }
     
     private func initContentViewForSV(){
@@ -83,28 +86,6 @@ class DiscoverViewController: UIViewController {
             make.edges.equalTo()(self.backgroundScrollView)
             make.centerY.equalTo()(self.backgroundScrollView)
             make.width.equalTo()(self.backgroundScrollView).multipliedBy()(CGFloat(self.categoryInfoArr.count))
-        }
-    }
-    
-    private func fillChildren(){
-        let view1 = UIView()
-        view1.backgroundColor = UIColor.redColor()
-        contentViewForSV.addSubview(view1)
-        view1.mas_makeConstraints { (make) -> Void in
-            make.left.equalTo()(self.contentViewForSV)
-            make.top.equalTo()(self.contentViewForSV)
-            make.bottom.equalTo()(self.contentViewForSV)
-            make.width.equalTo()(self.backgroundScrollView)
-        }
-        
-        let view2 = UIView()
-        contentViewForSV.addSubview(view2)
-        view2.backgroundColor = UIColor.greenColor()
-        view2.mas_makeConstraints { (make) -> Void in
-            make.left.equalTo()(view1.mas_right)
-            make.top.equalTo()(self.contentViewForSV)
-            make.bottom.equalTo()(self.contentViewForSV)
-            make.width.equalTo()(self.backgroundScrollView)
         }
     }
     
@@ -190,6 +171,8 @@ extension DiscoverViewController: UIScrollViewDelegate {
     // 监听scrollView的滚动事件
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if scrollView === backgroundScrollView {
+            
+            print(self.topLayoutGuide.length)
             let screenWidth = UIScreen.mainScreen().bounds.size.width
             let index = Int(scrollView.contentOffset.x / screenWidth)
             doubleTextView.clickBtnToIndex(index)
