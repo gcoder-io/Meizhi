@@ -19,3 +19,7 @@
 #import "Masonry.h"
 
 #import "SVProgressHUD.h"
+
+#import "NJKWebViewProgress.h"
+
+#import "NJKWebViewProgressView.h"

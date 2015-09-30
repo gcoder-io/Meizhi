@@ -13,3 +13,5 @@ pod "AFNetworking", "~> 2.0"
 pod 'Masonry'
 
 pod 'SVProgressHUD'
+
+pod 'NJKWebViewProgress'

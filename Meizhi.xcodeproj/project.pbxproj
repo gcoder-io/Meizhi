@@ -237,6 +237,7 @@
 		E158BCF21BB3D6D900EE6785 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				E1AFED3E1BBAAEFA000E2488 /* views */,
 				E158BCF31BB3D6D900EE6785 /* ui */,
 			);
 			path = sdk;
@@ -289,6 +290,13 @@
 				E158BD1F1BB3DF5200EE6785 /* MeViewController.swift */,
 			);
 			path = me;
+			sourceTree = "<group>";
+		};
+		E1AFED3E1BBAAEFA000E2488 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
