@@ -92,14 +92,18 @@ class CategoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
             as! CategoryCell
+       configureCell(cell, indexPath: indexPath, isCalculateHeight: false)
+        return cell
+    }
+    
+    private func configureCell(cell:CategoryCell,indexPath:NSIndexPath, isCalculateHeight:Bool){
         if (indexPath.row % 2 == 0) {
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator;
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark;
         }
         let data = list?[indexPath.row]
-        cell.bindData(data, indexPath: indexPath, isCalculateHeight: false)
-        return cell
+        cell.bindData(data, indexPath: indexPath, isCalculateHeight: isCalculateHeight)
     }
     
     // 计算cell高度
@@ -107,8 +111,7 @@ class CategoryTableViewController: UITableViewController {
         
         // 自动计算方式
         let height = tableView.fd_heightForCellWithIdentifier("CategoryCell", cacheByIndexPath: indexPath) { (cell) -> Void in
-            let data = self.list?[indexPath.row]
-            (cell as! CategoryCell).bindData(data, indexPath: indexPath, isCalculateHeight: true)
+            self.configureCell(cell as! CategoryCell, indexPath: indexPath, isCalculateHeight: true)
         }
 
         print("height=============\(height)")

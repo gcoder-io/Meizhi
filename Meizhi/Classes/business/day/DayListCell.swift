@@ -20,6 +20,8 @@ class DayListCell: UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //        lb_desc.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.size.width - 20
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -42,32 +44,32 @@ extension DayListCell : TableViewCellAdapter{
                 iv_image.removeConstraint(tempWidthConstraint)
             }
             if model!.url == nil || model!.url.isEmpty{
-                tempWidthConstraint = NSLayoutConstraint(item: iv_image, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 0.0)
-                iv_image.addConstraint(tempWidthConstraint)
-                iv_image.setNeedsUpdateConstraints()
-                iv_image.updateConstraintsIfNeeded()
-                iv_image.setNeedsLayout()
-                iv_image.layoutIfNeeded()
-//                iv_image.mas_remakeConstraints({ (make) -> Void in
-//                    make.height.equalTo()(iv_image.mas_width).multipliedBy()(0.0)
-//                })
-                
-                contentView.layoutIfNeeded()
+//                tempWidthConstraint = NSLayoutConstraint(item: iv_image, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 0.0)
+//                iv_image.addConstraint(tempWidthConstraint)
+//                iv_image.setNeedsUpdateConstraints()
+//                iv_image.updateConstraintsIfNeeded()
+//                iv_image.setNeedsLayout()
+//                iv_image.layoutIfNeeded()
+                iv_image.mas_remakeConstraints({ (make) -> Void in
+                    make.height.equalTo()(iv_image.mas_width).multipliedBy()(0.0)
+                })
+        
+                layoutIfNeeded()
                 if !isCalculateHeight{
                     iv_image.image = nil
                 }
             }else{
-                tempWidthConstraint = NSLayoutConstraint(item: iv_image, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: iv_image, attribute: NSLayoutAttribute.Width, multiplier: 9.0/16.0, constant: 0.0)
-                iv_image.addConstraint(tempWidthConstraint)
-                iv_image.setNeedsUpdateConstraints()
-                iv_image.updateConstraintsIfNeeded()
-                iv_image.setNeedsLayout()
-                iv_image.layoutIfNeeded()
-//                iv_image.mas_remakeConstraints({ (make) -> Void in
-//                    make.height.equalTo()(iv_image.mas_width).multipliedBy()(9.0/16.0)
-//                })
+//                tempWidthConstraint = NSLayoutConstraint(item: iv_image, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: iv_image, attribute: NSLayoutAttribute.Width, multiplier: 9.0/16.0, constant: 0.0)
+//                iv_image.addConstraint(tempWidthConstraint)
+//                iv_image.setNeedsUpdateConstraints()
+//                iv_image.updateConstraintsIfNeeded()
+//                iv_image.setNeedsLayout()
+//                iv_image.layoutIfNeeded()
+                iv_image.mas_remakeConstraints({ (make) -> Void in
+                    make.height.equalTo()(iv_image.mas_width).multipliedBy()(9.0/16.0)
+                })
             
-                contentView.layoutIfNeeded()
+                layoutIfNeeded()
                 if !isCalculateHeight{
                     iv_image.sd_setImageWithURL(NSURL(string: model!.url), placeholderImage: UIImage(named: "avatar"))
                 }

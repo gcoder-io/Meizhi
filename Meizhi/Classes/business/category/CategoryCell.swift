@@ -18,7 +18,7 @@ class CategoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        lb_desc.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.size.width - 20
+//        lb_desc.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.size.width - 20
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
