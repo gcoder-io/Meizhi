@@ -63,6 +63,11 @@ class DayListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell", forIndexPath: indexPath)
             as! DayListCell
+        if (indexPath.row % 2 == 0) {
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark;
+        }
         let data = list?[indexPath.row]
         cell.bindData(data, indexPath: indexPath, isCalculateHeight: false)
         return cell
