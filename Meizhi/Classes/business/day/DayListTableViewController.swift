@@ -81,8 +81,8 @@ class DayListTableViewController: UITableViewController {
 
         
         // 手动计算方式
-        //let height = estimatedCellHeight(indexPath)
-        //return height
+//        let height = estimatedCellHeight(indexPath)
+//        return height
     }
     
     // 估算cell高度
@@ -124,15 +124,10 @@ extension DayListTableViewController:TableViewCellHandler{
             if height != nil{
                 return height ?? 0
             }
-            
-            estimatedCell?.iv_image.image = UIImage(named: "avatar")
-            estimatedCell?.lb_date.text = categoryItem.publishedAt
-            estimatedCell?.lb_who.text = categoryItem.who
-            estimatedCell?.lb_desc.text = categoryItem.desc
-            
-            estimatedCell?.layoutIfNeeded()
-            
-            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 1
+            estimatedCell?.bindData(categoryItem, indexPath: indexPath, isCalculateHeight: true)
+            height = estimatedCell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+
+//            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 1
             categoryItem.cellHeight = height
             
             print(height)
