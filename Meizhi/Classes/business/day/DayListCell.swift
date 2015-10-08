@@ -51,8 +51,8 @@ extension DayListCell : TableViewCellAdapter{
 //                iv_image.setNeedsLayout()
 //                iv_image.layoutIfNeeded()
                 iv_image.mas_remakeConstraints({ (make) -> Void in
-                    make.height.equalTo()(iv_image.mas_width).multipliedBy()(0.0)
-                })        
+//                    make.height.equalTo()(iv_image.mas_width).multipliedBy()(0.0)
+                })
                 if !isCalculateHeight{
                     iv_image.image = nil
                 }
