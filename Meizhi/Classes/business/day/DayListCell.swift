@@ -52,9 +52,7 @@ extension DayListCell : TableViewCellAdapter{
 //                iv_image.layoutIfNeeded()
                 iv_image.mas_remakeConstraints({ (make) -> Void in
                     make.height.equalTo()(iv_image.mas_width).multipliedBy()(0.0)
-                })
-        
-                layoutIfNeeded()
+                })        
                 if !isCalculateHeight{
                     iv_image.image = nil
                 }
@@ -69,12 +67,12 @@ extension DayListCell : TableViewCellAdapter{
                     make.height.equalTo()(iv_image.mas_width).multipliedBy()(9.0/16.0)
                 })
             
-                layoutIfNeeded()
                 if !isCalculateHeight{
                     iv_image.sd_setImageWithURL(NSURL(string: model!.url), placeholderImage: UIImage(named: "avatar"))
                 }
             }
         }
+        layoutIfNeeded()
     }
 }
 

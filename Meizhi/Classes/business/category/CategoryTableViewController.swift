@@ -173,13 +173,10 @@ extension CategoryTableViewController:TableViewCellHandler{
                 return height ?? 0
             }
             
-            estimatedCell?.lb_desc.text = categoryItem.desc
-            estimatedCell?.lb_who.text = categoryItem.who
+            estimatedCell?.bindData(categoryItem, indexPath: indexPath, isCalculateHeight: true)
+            height = estimatedCell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
             
-            estimatedCell?.layoutIfNeeded()
-            
-            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 10
-//            estimatedCell!.contentView.systemLayoutSizeFittingSize(<#T##targetSize: CGSize##CGSize#>)
+//            height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 10
             categoryItem.cellHeight = height
             
             print("\(indexPath.row)======\(height)")
