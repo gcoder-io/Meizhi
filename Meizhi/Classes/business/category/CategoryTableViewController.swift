@@ -93,7 +93,7 @@ class CategoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
             as! CategoryCell
         let data = list?[indexPath.row]
-        cell.bindData(data, indexPath: indexPath)
+        cell.bindData(data, indexPath: indexPath, isCalculateHeight: false)
         return cell
     }
     
@@ -103,7 +103,7 @@ class CategoryTableViewController: UITableViewController {
         // 自动计算方式
         let height = tableView.fd_heightForCellWithIdentifier("CategoryCell", cacheByIndexPath: indexPath) { (cell) -> Void in
             let data = self.list?[indexPath.row]
-            (cell as! CategoryCell).bindData(data, indexPath: indexPath)
+            (cell as! CategoryCell).bindData(data, indexPath: indexPath, isCalculateHeight: true)
         }
 
         print("height=============\(height)")

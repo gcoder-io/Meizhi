@@ -18,5 +18,5 @@ protocol TableViewCellAdapter{
     - parameter model:
     - parameter indexPath:
     */
-    func bindData(model:Model?, indexPath: NSIndexPath)
+    func bindData(model:Model?, indexPath: NSIndexPath, isCalculateHeight:Bool)
 }

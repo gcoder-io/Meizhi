@@ -29,7 +29,7 @@ class CategoryCell: UITableViewCell {
 
 extension CategoryCell : TableViewCellAdapter{
     
-    func bindData(model:DataItem?, indexPath: NSIndexPath){
+    func bindData(model:DataItem?, indexPath: NSIndexPath, isCalculateHeight: Bool){
         // fill data.
         if model != nil{
             lb_who.text = model!.who

@@ -27,18 +27,18 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9I-OI-66N">
-                        <rect key="frame" x="0.0" y="0.0" width="363" height="204"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="t9I-OI-66N" secondAttribute="height" multiplier="16:9" id="UYA-sg-zOF"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPE-b6-ucu">
                         <rect key="frame" x="10" y="214" width="343" height="41"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9I-OI-66N">
+                        <rect key="frame" x="0.0" y="0.0" width="363" height="204"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="t9I-OI-66N" secondAttribute="height" multiplier="16:9" id="UYA-sg-zOF"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="MUu-y5-UoK" firstAttribute="baseline" secondItem="rcf-Xi-WKW" secondAttribute="baseline" id="5f9-Mv-gC8"/>
@@ -57,6 +57,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="iv_image" destination="t9I-OI-66N" id="9Wh-Fz-KaE"/>
+                <outlet property="iv_image_height" destination="UYA-sg-zOF" id="NNQ-SB-5KA"/>
                 <outlet property="lb_date" destination="MUu-y5-UoK" id="3KL-J2-zgj"/>
                 <outlet property="lb_desc" destination="yPE-b6-ucu" id="duv-Ak-D8h"/>
                 <outlet property="lb_who" destination="rcf-Xi-WKW" id="onp-US-ecD"/>

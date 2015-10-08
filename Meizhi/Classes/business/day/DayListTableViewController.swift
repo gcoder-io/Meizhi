@@ -34,7 +34,7 @@ class DayListTableViewController: UITableViewController {
 
     private func initTableView(){
         // 去除cell分割线
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        //tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -64,7 +64,7 @@ class DayListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("DayListCell", forIndexPath: indexPath)
             as! DayListCell
         let data = list?[indexPath.row]
-        cell.bindData(data, indexPath: indexPath)
+        cell.bindData(data, indexPath: indexPath, isCalculateHeight: false)
         return cell
     }
     
@@ -73,7 +73,7 @@ class DayListTableViewController: UITableViewController {
         // 自动计算方式
         let height = tableView.fd_heightForCellWithIdentifier("DayListCell", cacheByIndexPath: indexPath) { (cell) -> Void in
             let data = self.list?[indexPath.row]
-            (cell as! DayListCell).bindData(data, indexPath: indexPath)
+            (cell as! DayListCell).bindData(data, indexPath: indexPath, isCalculateHeight: true)
         }
         
         print("height=============\(height)")
@@ -88,6 +88,19 @@ class DayListTableViewController: UITableViewController {
     // 估算cell高度
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 317.5
+    }
+    
+    // 处理cell line左边界不全问题
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        // ios7.0+处理方式
+        cell.separatorInset = UIEdgeInsetsZero
+        // ios8.0+需附加配置
+        if #available(iOS 8.0, *) {
+            cell.preservesSuperviewLayoutMargins = false
+            cell.layoutMargins = UIEdgeInsetsZero
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
@@ -252,6 +265,9 @@ extension DayListTableViewController{
                             if i > 0{
                                 item.desc! += list![i - 1].desc
                                 item.desc! += "abcdefghijklmnopqrstuvwxyz"
+                            }
+                            if i % 2 == 0{
+                                item.url = nil
                             }
 
                             list?.append(item)
