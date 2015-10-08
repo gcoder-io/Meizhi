@@ -99,8 +99,19 @@ class CategoryTableViewController: UITableViewController {
     
     // 计算cell高度
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let height = estimatedCellHeight(indexPath)
+        
+        // 自动计算方式
+        let height = tableView.fd_heightForCellWithIdentifier("CategoryCell", cacheByIndexPath: indexPath) { (cell) -> Void in
+            let data = self.list?[indexPath.row]
+            (cell as! CategoryCell).bindData(data, indexPath: indexPath)
+        }
+
+        print("height=============\(height)")
         return height
+        
+        // 手动计算方式
+        //let height = estimatedCellHeight(indexPath)
+        //return height
     }
     
     // 估算cell高度
@@ -130,6 +141,7 @@ class CategoryTableViewController: UITableViewController {
         webVC.setUrl(data?.url)
         jumpDelegate?.jump(webVC)
     }
+    
 }
 
 // MARK: - TableViewCell处理器
@@ -159,7 +171,7 @@ extension CategoryTableViewController:TableViewCellHandler{
             estimatedCell?.layoutIfNeeded()
             
             height = CGRectGetMaxY(estimatedCell!.lb_who.frame) + 10
-            
+//            estimatedCell!.contentView.systemLayoutSizeFittingSize(<#T##targetSize: CGSize##CGSize#>)
             categoryItem.cellHeight = height
             
             print("\(indexPath.row)======\(height)")
@@ -293,6 +305,11 @@ extension CategoryTableViewController{
                     for(var i=0; i < results.count; i++){
                         if let dic = results[i] as? NSDictionary{
                             let item = DataItem(fromDictionary: dic)
+                            // test
+                            if i > 0{
+                                item.desc! += list![i - 1].desc
+                                item.desc! += "abcdefghijklmnopqrstuvwxyz"
+                            }
                             list?.append(item)
                         }
                     }

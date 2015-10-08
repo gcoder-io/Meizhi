@@ -14,6 +14,7 @@ class DayListCell: UITableViewCell{
     @IBOutlet weak var iv_image: UIImageView!
     @IBOutlet weak var lb_who: UILabel!
     @IBOutlet weak var lb_date: UILabel!
+    @IBOutlet weak var lb_desc: UILabel!
 
   
     override func awakeFromNib() {
@@ -35,7 +36,8 @@ extension DayListCell : TableViewCellAdapter{
         // fill data.
         if model != nil{
             lb_who.text = model!.who
-            lb_date.text = model!.desc
+            lb_date.text = model!.publishedAt
+            lb_desc.text = model!.desc
             iv_image.sd_setImageWithURL(NSURL(string: model!.url), placeholderImage: UIImage(named: "avatar"))
             layoutIfNeeded()
         }

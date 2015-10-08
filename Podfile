@@ -15,3 +15,5 @@ pod 'Masonry'
 pod 'SVProgressHUD'
 
 pod 'NJKWebViewProgress'
+
+pod 'UITableView+FDTemplateLayoutCell', '~> 1.3'

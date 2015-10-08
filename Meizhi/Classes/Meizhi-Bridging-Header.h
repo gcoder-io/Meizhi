@@ -23,3 +23,5 @@
 #import "NJKWebViewProgress.h"
 
 #import "NJKWebViewProgressView.h"
+
+#import "UITableView+FDTemplateLayoutCell.h"

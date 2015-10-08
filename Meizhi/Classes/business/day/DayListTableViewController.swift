@@ -68,10 +68,21 @@ class DayListTableViewController: UITableViewController {
         return cell
     }
     
-    // 计算cell高度
+    // 计算cell高度dde
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let height = estimatedCellHeight(indexPath)
+        // 自动计算方式
+        let height = tableView.fd_heightForCellWithIdentifier("DayListCell", cacheByIndexPath: indexPath) { (cell) -> Void in
+            let data = self.list?[indexPath.row]
+            (cell as! DayListCell).bindData(data, indexPath: indexPath)
+        }
+        
+        print("height=============\(height)")
         return height
+
+        
+        // 手动计算方式
+        //let height = estimatedCellHeight(indexPath)
+        //return height
     }
     
     // 估算cell高度
@@ -102,8 +113,9 @@ extension DayListTableViewController:TableViewCellHandler{
             }
             
             estimatedCell?.iv_image.image = UIImage(named: "avatar")
-            estimatedCell?.lb_date.text = categoryItem.desc
+            estimatedCell?.lb_date.text = categoryItem.publishedAt
             estimatedCell?.lb_who.text = categoryItem.who
+            estimatedCell?.lb_desc.text = categoryItem.desc
             
             estimatedCell?.layoutIfNeeded()
             
@@ -235,6 +247,13 @@ extension DayListTableViewController{
                     for(var i=0; i < results.count; i++){
                         if let dic = results[i] as? NSDictionary{
                             let item = DataItem(fromDictionary: dic)
+                            // test
+                            item.desc = "这是一条测试描述"
+                            if i > 0{
+                                item.desc! += list![i - 1].desc
+                                item.desc! += "abcdefghijklmnopqrstuvwxyz"
+                            }
+
                             list?.append(item)
                         }
                     }
