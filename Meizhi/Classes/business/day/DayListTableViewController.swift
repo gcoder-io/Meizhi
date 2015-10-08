@@ -74,14 +74,14 @@ class DayListTableViewController: UITableViewController {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark;
         }
         let data = list?[indexPath.row]
-        cell.bindData(data, indexPath: indexPath, isCalculateHeight: false)
+        cell.bindData(data, indexPath: indexPath, isCalculateHeight: isCalculateHeight)
     }
     
     // 计算cell高度dde
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // 自动计算方式
         let height = tableView.fd_heightForCellWithIdentifier("DayListCell", cacheByIndexPath: indexPath) { (cell) -> Void in
-            self.configureCell(cell as! DayListCell, indexPath: indexPath, isCalculateHeight: false)
+            self.configureCell(cell as! DayListCell, indexPath: indexPath, isCalculateHeight: true)
         }
         
         print("height=============\(height)")
